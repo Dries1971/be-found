@@ -1,26 +1,35 @@
 @import "tailwindcss";
+@import "../styles/theme.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
+  /* --- Colors (exposed to Tailwind utilities) --- */
+  --color-midnight: var(--color-midnight);
+  --color-navy: var(--color-navy);
+  --color-slate: var(--color-slate);
+  --color-muted: var(--color-muted);
+  --color-cloud: var(--color-cloud);
+  --color-snow: var(--color-snow);
+  --color-gold: var(--color-gold);
+  --color-amber: var(--color-amber);
+  --color-teal: var(--color-teal);
+  --color-teal-light: var(--color-teal-light);
+
+  /* --- Semantic colors --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-background-secondary: var(--background-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* --- Fonts --- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

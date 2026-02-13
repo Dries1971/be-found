@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "Be-Found | KI-Sichtbarkeit & GEO-Autoritäts-Hub",
+    "description": "Werden Sie von jedem und jeder KI gefunden. Der Autoritäts-Hub für Generative Engine Optimization (GEO), KI-Suchsichtbarkeit und automatisierte Inhaltserstellung."
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "services": "Dienstleistungen",
+    "products": "Produkte",
+    "blog": "Blog",
+    "research": "Forschung",
+    "pricing": "Preise",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Gefunden Werden. Von Jedem. Von Jeder KI.",
+    "subtitle": "Der Autoritäts-Hub für Generative Engine Optimization (GEO) und KI-gestützte Content-Strategien.",
+    "cta_primary": "GEO-Score Prüfen",
+    "cta_secondary": "Unsere Forschung Entdecken"
+  },
+  "footer": {
+    "copyright": "Be-Found. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen"
+  }
+}

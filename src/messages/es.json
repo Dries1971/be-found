@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "Be-Found | Visibilidad IA & Hub de Autoridad GEO",
+    "description": "Sea encontrado por todos y por cada IA. El hub de autoridad para Generative Engine Optimization (GEO), visibilidad en búsquedas IA y creación de contenido automatizada."
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "products": "Productos",
+    "blog": "Blog",
+    "research": "Investigación",
+    "pricing": "Precios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Sea Encontrado. Por Todos. Por Cada IA.",
+    "subtitle": "El hub de autoridad para Generative Engine Optimization (GEO) y estrategias de contenido impulsadas por IA.",
+    "cta_primary": "Verifique Su Puntuación GEO",
+    "cta_secondary": "Explore Nuestra Investigación"
+  },
+  "footer": {
+    "copyright": "Be-Found. Todos los derechos reservados.",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio"
+  }
+}

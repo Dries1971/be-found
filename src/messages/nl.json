@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "Be-Found | AI Zichtbaarheid & GEO Autoriteits Hub",
+    "description": "Word gevonden door iedereen en elke AI. De autoriteits-hub voor Generative Engine Optimization (GEO), AI zoekzichtbaarheid en geautomatiseerde contentcreatie."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Over ons",
+    "services": "Diensten",
+    "products": "Producten",
+    "blog": "Blog",
+    "research": "Onderzoek",
+    "pricing": "Prijzen",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Word Gevonden. Door Iedereen. Door Elke AI.",
+    "subtitle": "De autoriteits-hub voor Generative Engine Optimization (GEO) en AI-gedreven content strategieën.",
+    "cta_primary": "Check Je GEO Score",
+    "cta_secondary": "Bekijk Ons Onderzoek"
+  },
+  "footer": {
+    "copyright": "Be-Found. Alle rechten voorbehouden.",
+    "privacy": "Privacybeleid",
+    "terms": "Algemene voorwaarden"
+  }
+}

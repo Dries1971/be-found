@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be-Found.online — Color Moodboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0a; color: #fff; }
+
+  .header { text-align: center; padding: 60px 20px 20px; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .header p { font-size: 16px; color: #94a3b8; max-width: 700px; margin: 0 auto; }
+
+  .recommendation { text-align: center; padding: 20px 20px 40px; }
+  .recommendation .pill { display: inline-block; background: linear-gradient(135deg, #F59E0B, #D97706); color: #0F172A; padding: 10px 24px; border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.3px; }
+
+  .options { display: flex; flex-direction: column; gap: 60px; max-width: 1200px; margin: 0 auto; padding: 0 20px 80px; }
+
+  .option { border-radius: 16px; overflow: hidden; border: 1px solid #1e293b; }
+  .option.recommended { border: 2px solid #F59E0B; box-shadow: 0 0 40px rgba(245,158,11,0.15); }
+  .option-header { padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .option-header h2 { font-size: 24px; font-weight: 700; }
+  .option-header .tag { padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; }
+  .option-header .rec-badge { padding: 6px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; background: #F59E0B; color: #0F172A; }
+
+  .swatches { display: flex; gap: 0; height: 80px; }
+  .swatch { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-align: center; line-height: 1.4; }
+
+  .section-label { padding: 20px 40px 12px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #64748b; }
+
+  /* Hero previews */
+  .hero-preview { padding: 60px 40px; text-align: center; }
+  .hero-preview .badge { display: inline-block; padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 20px; text-transform: uppercase; }
+  .hero-preview h3 { font-size: 42px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  .hero-preview p { font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto 32px; }
+  .hero-preview .cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .hero-preview .btn { padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; border: none; cursor: pointer; transition: transform 0.2s; }
+  .hero-preview .btn:hover { transform: translateY(-2px); }
+  .hero-preview .btn-primary { color: #fff; }
+  .hero-preview .btn-secondary { background: transparent; border: 2px solid; }
+
+  /* Authority bar */
+  .authority-bar { padding: 16px 40px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: 13px; font-weight: 600; letter-spacing: 0.3px; }
+  .authority-bar span { opacity: 0.9; }
+  .authority-bar .dot { opacity: 0.4; }
+
+  /* Card preview */
+  .cards-preview { padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .card { border-radius: 12px; padding: 28px; }
+  .card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 14px; line-height: 1.5; }
+  .card .stat { font-size: 36px; font-weight: 800; margin-bottom: 4px; }
+  .card .stat-label { font-size: 13px; font-weight: 500; }
+
+  /* Tech section preview */
+  .tech-preview { padding: 40px; }
+  .tech-preview-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+  .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .tech-card { border-radius: 12px; padding: 24px; }
+  .tech-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .tech-card .icon { width: 20px; height: 20px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+  .tech-card pre { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.6; padding: 16px; border-radius: 8px; overflow-x: auto; margin-top: 8px; }
+  .tech-card .metric { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+  .tech-card .metric-label { font-size: 12px; font-weight: 500; }
+  .tech-card .progress-bar { height: 6px; border-radius: 3px; margin-top: 12px; overflow: hidden; }
+  .tech-card .progress-fill { height: 100%; border-radius: 3px; }
+
+  /* Comparison bar */
+  .comparison-bar { padding: 24px 40px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px; text-align: center; }
+  .comparison-item { flex: 1; min-width: 120px; }
+  .comparison-item .score { font-size: 24px; font-weight: 800; }
+  .comparison-item .label { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; margin-top: 4px; }
+
+  /* === OPTION A+ (RECOMMENDED): Navy + Gold + Teal tertiary === */
+  .option-aplus .option-header { background: #0F172A; }
+  .option-aplus .option-header .tag { background: #F59E0B; color: #0F172A; }
+
+  .option-aplus .s1 { background: #020617; color: #cbd5e1; }
+  .option-aplus .s2 { background: #0F172A; color: #cbd5e1; }
+  .option-aplus .s3 { background: #1E293B; color: #cbd5e1; }
+  .option-aplus .s4 { background: #334155; color: #fff; }
+  .option-aplus .s5 { background: #F59E0B; color: #0F172A; }
+  .option-aplus .s6 { background: #D97706; color: #0F172A; }
+  .option-aplus .s7 { background: #0D9488; color: #fff; }
+  .option-aplus .s8 { background: #F8FAFC; color: #0F172A; }
+  .option-aplus .s9 { background: #E2E8F0; color: #0F172A; }
+
+  .option-aplus .hero-preview { background: linear-gradient(135deg, #020617 0%, #0F172A 50%, #1a1a3e 100%); color: #F8FAFC; }
+  .option-aplus .hero-preview .badge { background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
+  .option-aplus .hero-preview h3 span { color: #F59E0B; }
+  .option-aplus .hero-preview p { color: #94A3B8; }
+  .option-aplus .hero-preview .btn-primary { background: #F59E0B; color: #0F172A; }
+  .option-aplus .hero-preview .btn-secondary { color: #F59E0B; border-color: #F59E0B; }
+  .option-aplus .authority-bar { background: #020617; color: #94A3B8; border-top: 1px solid #1E293B; }
+
+  .option-aplus .cards-preview { background: #F8FAFC; }
+  .option-aplus .card { background: #fff; border: 1px solid #E2E8F0; }
+  .option-aplus .card h4 { color: #0F172A; }
+  .option-aplus .card p { color: #475569; }
+  .option-aplus .card .stat { color: #F59E0B; }
+  .option-aplus .card .stat-label { color: #64748B; }
+
+  .option-aplus .tech-preview { background: #020617; }
+  .option-aplus .tech-preview-label { color: #0D9488; }
+  .option-aplus .tech-card { background: #0F172A; border: 1px solid #1E293B; }
+  .option-aplus .tech-card h4 { color: #F8FAFC; }
+  .option-aplus .tech-card .icon { background: #0D9488; color: #fff; }
+  .option-aplus .tech-card pre { background: #020617; color: #94A3B8; border: 1px solid #1E293B; }
+  .option-aplus .tech-card pre .keyword { color: #0D9488; }
+  .option-aplus .tech-card pre .string { color: #F59E0B; }
+  .option-aplus .tech-card pre .comment { color: #475569; }
+  .option-aplus .tech-card .metric { color: #0D9488; }
+  .option-aplus .tech-card .metric-label { color: #64748B; }
+  .option-aplus .tech-card .progress-bar { background: #1E293B; }
+  .option-aplus .tech-card .progress-fill { background: linear-gradient(90deg, #0D9488, #2DD4BF); }
+
+  .option-aplus .comparison-bar { background: #0F172A; border-top: 1px solid #1E293B; }
+  .option-aplus .comparison-item .score { color: #F59E0B; }
+  .option-aplus .comparison-item .label { color: #64748B; }
+
+  /* === OPTION A (ORIGINAL): Navy + Gold === */
+  .option-a .option-header { background: #0F172A; }
+  .option-a .option-header .tag { background: #F59E0B; color: #0F172A; }
+
+  .option-a .s1 { background: #020617; color: #cbd5e1; }
+  .option-a .s2 { background: #0F172A; color: #cbd5e1; }
+  .option-a .s3 { background: #1E293B; color: #cbd5e1; }
+  .option-a .s4 { background: #334155; color: #fff; }
+  .option-a .s5 { background: #F59E0B; color: #0F172A; }
+  .option-a .s6 { background: #D97706; color: #0F172A; }
+  .option-a .s7 { background: #F8FAFC; color: #0F172A; }
+  .option-a .s8 { background: #E2E8F0; color: #0F172A; }
+
+  .option-a .hero-preview { background: linear-gradient(135deg, #020617 0%, #0F172A 50%, #1a1a3e 100%); color: #F8FAFC; }
+  .option-a .hero-preview .badge { background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
+  .option-a .hero-preview h3 span { color: #F59E0B; }
+  .option-a .hero-preview p { color: #94A3B8; }
+  .option-a .hero-preview .btn-primary { background: #F59E0B; color: #0F172A; }
+  .option-a .hero-preview .btn-secondary { color: #F59E0B; border-color: #F59E0B; }
+  .option-a .authority-bar { background: #020617; color: #94A3B8; border-top: 1px solid #1E293B; }
+
+  .option-a .cards-preview { background: #F8FAFC; }
+  .option-a .card { background: #fff; border: 1px solid #E2E8F0; }
+  .option-a .card h4 { color: #0F172A; }
+  .option-a .card p { color: #475569; }
+  .option-a .card .stat { color: #F59E0B; }
+  .option-a .card .stat-label { color: #64748B; }
+
+  /* === OPTION B: Navy + Teal === */
+  .option-b .option-header { background: #0F172A; }
+  .option-b .option-header .tag { background: #0D9488; color: #fff; }
+
+  .option-b .s1 { background: #020617; color: #cbd5e1; }
+  .option-b .s2 { background: #0F172A; color: #cbd5e1; }
+  .option-b .s3 { background: #1E293B; color: #cbd5e1; }
+  .option-b .s4 { background: #334155; color: #fff; }
+  .option-b .s5 { background: #0D9488; color: #fff; }
+  .option-b .s6 { background: #0F766E; color: #fff; }
+  .option-b .s7 { background: #F8FAFC; color: #0F172A; }
+  .option-b .s8 { background: #E2E8F0; color: #0F172A; }
+
+  .option-b .hero-preview { background: linear-gradient(135deg, #020617 0%, #0F172A 50%, #0a2520 100%); color: #F8FAFC; }
+  .option-b .hero-preview .badge { background: rgba(13,148,136,0.15); color: #2DD4BF; border: 1px solid rgba(13,148,136,0.3); }
+  .option-b .hero-preview h3 span { color: #2DD4BF; }
+  .option-b .hero-preview p { color: #94A3B8; }
+  .option-b .hero-preview .btn-primary { background: #0D9488; color: #fff; }
+  .option-b .hero-preview .btn-secondary { color: #2DD4BF; border-color: #0D9488; }
+  .option-b .authority-bar { background: #020617; color: #94A3B8; border-top: 1px solid #1E293B; }
+
+  .option-b .cards-preview { background: #F8FAFC; }
+  .option-b .card { background: #fff; border: 1px solid #E2E8F0; }
+  .option-b .card h4 { color: #0F172A; }
+  .option-b .card p { color: #475569; }
+  .option-b .card .stat { color: #0D9488; }
+  .option-b .card .stat-label { color: #64748B; }
+
+  /* === OPTION C: Charcoal + Emerald === */
+  .option-c .option-header { background: #1E293B; }
+  .option-c .option-header .tag { background: #10B981; color: #fff; }
+
+  .option-c .s1 { background: #0B1120; color: #cbd5e1; }
+  .option-c .s2 { background: #1E293B; color: #cbd5e1; }
+  .option-c .s3 { background: #334155; color: #cbd5e1; }
+  .option-c .s4 { background: #475569; color: #fff; }
+  .option-c .s5 { background: #10B981; color: #fff; }
+  .option-c .s6 { background: #059669; color: #fff; }
+  .option-c .s7 { background: #F8FAFC; color: #1E293B; }
+  .option-c .s8 { background: #E2E8F0; color: #1E293B; }
+
+  .option-c .hero-preview { background: linear-gradient(135deg, #0B1120 0%, #1E293B 50%, #0f2922 100%); color: #F8FAFC; }
+  .option-c .hero-preview .badge { background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(16,185,129,0.3); }
+  .option-c .hero-preview h3 span { color: #34D399; }
+  .option-c .hero-preview p { color: #94A3B8; }
+  .option-c .hero-preview .btn-primary { background: #10B981; color: #fff; }
+  .option-c .hero-preview .btn-secondary { color: #34D399; border-color: #10B981; }
+  .option-c .authority-bar { background: #0B1120; color: #94A3B8; border-top: 1px solid #334155; }
+
+  .option-c .cards-preview { background: #F8FAFC; }
+  .option-c .card { background: #fff; border: 1px solid #E2E8F0; }
+  .option-c .card h4 { color: #1E293B; }
+  .option-c .card p { color: #475569; }
+  .option-c .card .stat { color: #10B981; }
+  .option-c .card .stat-label { color: #64748B; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-preview h3 { font-size: 28px; }
+    .hero-preview { padding: 40px 24px; }
+    .authority-bar { gap: 16px; font-size: 11px; }
+    .cards-preview { padding: 24px; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .tech-preview { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Be-Found.online — Color Moodboard</h1>
+  <p>Vier kleurrichtingen vergeleken. Optie A+ is de data-gedreven aanbeveling: Navy + Gold voor authority, met Teal als tertiaire kleur voor tech-secties.</p>
+</div>
+
+<div class="recommendation">
+  <span class="pill">AANBEVELING: A+ — Navy + Gold + Teal (tertiair)</span>
+</div>
+
+<div class="options">
+
+  <!-- OPTION A+: Navy + Gold + Teal tertiary (RECOMMENDED) -->
+  <div class="option option-aplus recommended">
+    <div class="option-header">
+      <h2>A+ — Navy + Gold + Teal (tertiair)</h2>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <span class="rec-badge">AANBEVOLEN</span>
+        <span class="tag">PREMIUM AUTHORITY + TECH</span>
+      </div>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch s1">MIDNIGHT<br>#020617</div>
+      <div class="swatch s2">NAVY<br>#0F172A</div>
+      <div class="swatch s3">SLATE<br>#1E293B</div>
+      <div class="swatch s4">MUTED<br>#334155</div>
+      <div class="swatch s5">GOLD<br>#F59E0B</div>
+      <div class="swatch s6">AMBER<br>#D97706</div>
+      <div class="swatch s7">TEAL<br>#0D9488</div>
+      <div class="swatch s8">SNOW<br>#F8FAFC</div>
+      <div class="swatch s9">CLOUD<br>#E2E8F0</div>
+    </div>
+
+    <!-- Consulting/Authority section (Gold dominant) -->
+    <div class="section-label" style="background: #0F172A; color: #F59E0B;">Gold = consulting, authority, landing pages</div>
+
+    <div class="hero-preview">
+      <div class="badge">Generative Engine Optimization</div>
+      <h3>Don't just be found.<br><span>Be cited.</span></h3>
+      <p>58% of searches now end without a click. AI answers are replacing search results. We help you become the source that AI trusts and cites.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary">Get Your Free GEO Audit</button>
+        <button class="btn btn-secondary">Download State of GEO 2026</button>
+      </div>
+    </div>
+
+    <div class="authority-bar">
+      <span>Since 1996</span> <span class="dot">&bull;</span>
+      <span>10,000+ AI-Optimized Blogs</span> <span class="dot">&bull;</span>
+      <span>1,000+ GEO Scores</span> <span class="dot">&bull;</span>
+      <span>100+ Clients in 45 Countries</span>
+    </div>
+
+    <div class="cards-preview">
+      <div class="card">
+        <div class="stat">+35%</div>
+        <div class="stat-label">MORE ORGANIC CLICKS</div>
+        <p>Brands cited in AI Overviews earn 35% more organic clicks than non-cited competitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">23x</div>
+        <div class="stat-label">BETTER CONVERSION</div>
+        <p>AI-referred visitors convert up to 23x better than traditional organic visitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">84%</div>
+        <div class="stat-label">MARKETER RECOGNITION</div>
+        <p>GEO is recognized by 84% of marketers as the term for AI search optimization.</p>
+      </div>
+    </div>
+
+    <!-- Tech section (Teal dominant) -->
+    <div class="section-label" style="background: #020617; color: #0D9488;">Teal = tech secties, dashboards, API, code</div>
+
+    <div class="tech-preview">
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h4><span class="icon">&#60;/&#62;</span> API Integration</h4>
+          <pre><span class="comment">// GEO Score API endpoint</span>
+<span class="keyword">const</span> response = <span class="keyword">await</span> fetch(
+  <span class="string">'https://api.geo-score.online/v1/analyze'</span>,
+  {
+    method: <span class="string">'POST'</span>,
+    body: JSON.stringify({
+      url: <span class="string">'https://example.com'</span>,
+      depth: <span class="string">'full'</span>
+    })
+  }
+);</pre>
+        </div>
+        <div class="tech-card">
+          <h4><span class="icon">&#9670;</span> GEO Score Dashboard</h4>
+          <div style="padding: 12px 0;">
+            <div class="metric">87/100</div>
+            <div class="metric-label">OVERALL GEO SCORE</div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 87%;"></div></div>
+          </div>
+          <div style="padding: 12px 0;">
+            <div class="metric">94/100</div>
+            <div class="metric-label">SCHEMA COVERAGE</div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 94%;"></div></div>
+          </div>
+          <div style="padding: 12px 0;">
+            <div class="metric">72/100</div>
+            <div class="metric-label">CITATION READINESS</div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 72%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-bar">
+      <div class="comparison-item">
+        <div class="score">54%</div>
+        <div class="label">TRUST (ADOBE STUDY)</div>
+      </div>
+      <div class="comparison-item">
+        <div class="score">27%</div>
+        <div class="label">PREMIUM TRIGGER (GOLD)</div>
+      </div>
+      <div class="comparison-item">
+        <div class="score">80%</div>
+        <div class="label">BRAND RECALL BOOST</div>
+      </div>
+      <div class="comparison-item">
+        <div class="score">#1</div>
+        <div class="label">MOST TRUSTED COLOR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION A: Navy + Gold (original, zonder teal) -->
+  <div class="option option-a">
+    <div class="option-header">
+      <h2>A — Navy + Gold (zonder teal)</h2>
+      <span class="tag">ENTERPRISE CONSULTING</span>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch s1">MIDNIGHT<br>#020617</div>
+      <div class="swatch s2">NAVY<br>#0F172A</div>
+      <div class="swatch s3">SLATE<br>#1E293B</div>
+      <div class="swatch s4">MUTED<br>#334155</div>
+      <div class="swatch s5">GOLD<br>#F59E0B</div>
+      <div class="swatch s6">AMBER<br>#D97706</div>
+      <div class="swatch s7">SNOW<br>#F8FAFC</div>
+      <div class="swatch s8">CLOUD<br>#E2E8F0</div>
+    </div>
+
+    <div class="hero-preview">
+      <div class="badge">Generative Engine Optimization</div>
+      <h3>Don't just be found.<br><span>Be cited.</span></h3>
+      <p>58% of searches now end without a click. AI answers are replacing search results. We help you become the source that AI trusts and cites.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary">Get Your Free GEO Audit</button>
+        <button class="btn btn-secondary">Download State of GEO 2026</button>
+      </div>
+    </div>
+
+    <div class="authority-bar">
+      <span>Since 1996</span> <span class="dot">&bull;</span>
+      <span>10,000+ AI-Optimized Blogs</span> <span class="dot">&bull;</span>
+      <span>1,000+ GEO Scores</span> <span class="dot">&bull;</span>
+      <span>100+ Clients in 45 Countries</span>
+    </div>
+
+    <div class="cards-preview">
+      <div class="card">
+        <div class="stat">+35%</div>
+        <div class="stat-label">MORE ORGANIC CLICKS</div>
+        <p>Brands cited in AI Overviews earn 35% more organic clicks than non-cited competitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">23x</div>
+        <div class="stat-label">BETTER CONVERSION</div>
+        <p>AI-referred visitors convert up to 23x better than traditional organic visitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">84%</div>
+        <div class="stat-label">MARKETER RECOGNITION</div>
+        <p>GEO is recognized by 84% of marketers as the term for AI search optimization.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B: Navy + Teal -->
+  <div class="option option-b">
+    <div class="option-header">
+      <h2>B — Navy + Teal</h2>
+      <span class="tag">TECH AUTHORITY</span>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch s1">MIDNIGHT<br>#020617</div>
+      <div class="swatch s2">NAVY<br>#0F172A</div>
+      <div class="swatch s3">SLATE<br>#1E293B</div>
+      <div class="swatch s4">MUTED<br>#334155</div>
+      <div class="swatch s5">TEAL<br>#0D9488</div>
+      <div class="swatch s6">DEEP TEAL<br>#0F766E</div>
+      <div class="swatch s7">SNOW<br>#F8FAFC</div>
+      <div class="swatch s8">CLOUD<br>#E2E8F0</div>
+    </div>
+
+    <div class="hero-preview">
+      <div class="badge">Generative Engine Optimization</div>
+      <h3>Don't just be found.<br><span>Be cited.</span></h3>
+      <p>58% of searches now end without a click. AI answers are replacing search results. We help you become the source that AI trusts and cites.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary">Get Your Free GEO Audit</button>
+        <button class="btn btn-secondary">Download State of GEO 2026</button>
+      </div>
+    </div>
+
+    <div class="authority-bar">
+      <span>Since 1996</span> <span class="dot">&bull;</span>
+      <span>10,000+ AI-Optimized Blogs</span> <span class="dot">&bull;</span>
+      <span>1,000+ GEO Scores</span> <span class="dot">&bull;</span>
+      <span>100+ Clients in 45 Countries</span>
+    </div>
+
+    <div class="cards-preview">
+      <div class="card">
+        <div class="stat">+35%</div>
+        <div class="stat-label">MORE ORGANIC CLICKS</div>
+        <p>Brands cited in AI Overviews earn 35% more organic clicks than non-cited competitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">23x</div>
+        <div class="stat-label">BETTER CONVERSION</div>
+        <p>AI-referred visitors convert up to 23x better than traditional organic visitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">84%</div>
+        <div class="stat-label">MARKETER RECOGNITION</div>
+        <p>GEO is recognized by 84% of marketers as the term for AI search optimization.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C: Charcoal + Emerald -->
+  <div class="option option-c">
+    <div class="option-header">
+      <h2>C — Charcoal + Emerald</h2>
+      <span class="tag">DATA-DRIVEN MODERN</span>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch s1">DEEP<br>#0B1120</div>
+      <div class="swatch s2">CHARCOAL<br>#1E293B</div>
+      <div class="swatch s3">SLATE<br>#334155</div>
+      <div class="swatch s4">MUTED<br>#475569</div>
+      <div class="swatch s5">EMERALD<br>#10B981</div>
+      <div class="swatch s6">FOREST<br>#059669</div>
+      <div class="swatch s7">SNOW<br>#F8FAFC</div>
+      <div class="swatch s8">CLOUD<br>#E2E8F0</div>
+    </div>
+
+    <div class="hero-preview">
+      <div class="badge">Generative Engine Optimization</div>
+      <h3>Don't just be found.<br><span>Be cited.</span></h3>
+      <p>58% of searches now end without a click. AI answers are replacing search results. We help you become the source that AI trusts and cites.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary">Get Your Free GEO Audit</button>
+        <button class="btn btn-secondary">Download State of GEO 2026</button>
+      </div>
+    </div>
+
+    <div class="authority-bar">
+      <span>Since 1996</span> <span class="dot">&bull;</span>
+      <span>10,000+ AI-Optimized Blogs</span> <span class="dot">&bull;</span>
+      <span>1,000+ GEO Scores</span> <span class="dot">&bull;</span>
+      <span>100+ Clients in 45 Countries</span>
+    </div>
+
+    <div class="cards-preview">
+      <div class="card">
+        <div class="stat">+35%</div>
+        <div class="stat-label">MORE ORGANIC CLICKS</div>
+        <p>Brands cited in AI Overviews earn 35% more organic clicks than non-cited competitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">23x</div>
+        <div class="stat-label">BETTER CONVERSION</div>
+        <p>AI-referred visitors convert up to 23x better than traditional organic visitors.</p>
+      </div>
+      <div class="card">
+        <div class="stat">84%</div>
+        <div class="stat-label">MARKETER RECOGNITION</div>
+        <p>GEO is recognized by 84% of marketers as the term for AI search optimization.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

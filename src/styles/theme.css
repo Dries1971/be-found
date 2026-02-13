@@ -1,0 +1,79 @@
+/*
+ * Design Tokens — be-found.online
+ * Navy + Gold + Teal palette
+ * Dark-first design (class-based toggle)
+ */
+
+/* ============================================
+   SEMANTIC COLOR TOKENS
+   ============================================ */
+
+:root {
+  /* --- Neutrals --- */
+  --color-midnight: #020617;
+  --color-navy: #0f172a;
+  --color-slate: #1e293b;
+  --color-muted: #334155;
+  --color-cloud: #e2e8f0;
+  --color-snow: #f8fafc;
+
+  /* --- Accents --- */
+  --color-gold: #f59e0b;
+  --color-amber: #d97706;
+  --color-teal: #0d9488;
+  --color-teal-light: #2dd4bf;
+
+  /* --- Semantic (light mode) --- */
+  --background: var(--color-snow);
+  --foreground: var(--color-navy);
+  --background-secondary: #ffffff;
+  --foreground-muted: var(--color-muted);
+  --border: var(--color-cloud);
+  --ring: var(--color-gold);
+
+  /* --- Spacing --- */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+  --spacing-4xl: 8rem;
+
+  /* --- Border Radii --- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-gold: 0 0 40px rgba(245, 158, 11, 0.15);
+
+  /* --- Transitions --- */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode overrides */
+.dark {
+  --background: var(--color-navy);
+  --foreground: var(--color-snow);
+  --background-secondary: var(--color-slate);
+  --foreground-muted: var(--color-cloud);
+  --border: var(--color-slate);
+  --ring: var(--color-gold);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 0 40px rgba(245, 158, 11, 0.2);
+}

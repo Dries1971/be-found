@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "Be-Found | AI Visibility & GEO Authority Hub",
+    "description": "Be Found by everyone and every AI. The authority hub for Generative Engine Optimization (GEO), AI search visibility, and automated content creation."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "blog": "Blog",
+    "research": "Research",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Be Found. By Everyone. By Every AI.",
+    "subtitle": "The authority hub for Generative Engine Optimization (GEO) and AI-powered content strategies.",
+    "cta_primary": "Check Your GEO Score",
+    "cta_secondary": "Explore Our Research"
+  },
+  "footer": {
+    "copyright": "Be-Found. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}
