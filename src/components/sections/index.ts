@@ -9,3 +9,19 @@ export type { ProblemSolutionProps } from "./ProblemSolution";
 
 export { CTASection } from "./CTASection";
 export type { CTASectionProps } from "./CTASection";
+
+export { StatGrid } from "./StatGrid";
+export type { StatGridProps, StatGridItem } from "./StatGrid";
+
+export { ServiceGrid } from "./ServiceGrid";
+export type { ServiceGridProps, ServiceItem } from "./ServiceGrid";
+
+export { EcosystemSection } from "./EcosystemSection";
+export type {
+  EcosystemSectionProps,
+  ProductItem,
+  ProductMetric,
+} from "./EcosystemSection";
+
+export { DataShowcase } from "./DataShowcase";
+export type { DataShowcaseProps, DataHighlight } from "./DataShowcase";
