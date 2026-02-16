@@ -25,3 +25,15 @@ export type {
 
 export { DataShowcase } from "./DataShowcase";
 export type { DataShowcaseProps, DataHighlight } from "./DataShowcase";
+
+export { TeamSection } from "./TeamSection";
+export type { TeamSectionProps, TeamMember } from "./TeamSection";
+
+export { TestimonialSection } from "./TestimonialSection";
+export type { TestimonialSectionProps, Testimonial } from "./TestimonialSection";
+
+export { LatestInsights } from "./LatestInsights";
+export type { LatestInsightsProps, BlogPost } from "./LatestInsights";
+
+export { PricingSection } from "./PricingSection";
+export type { PricingSectionProps, PricingTier } from "./PricingSection";
