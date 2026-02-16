@@ -12,9 +12,22 @@
   --color-cloud: var(--color-cloud);
   --color-snow: var(--color-snow);
   --color-gold: var(--color-gold);
+  --color-gold-hover: var(--color-gold-hover);
+  --color-gold-active: var(--color-gold-active);
   --color-amber: var(--color-amber);
   --color-teal: var(--color-teal);
+  --color-teal-hover: var(--color-teal-hover);
   --color-teal-light: var(--color-teal-light);
+
+  /* --- Status colors --- */
+  --color-success: var(--color-success);
+  --color-success-bg: var(--color-success-bg);
+  --color-info: var(--color-info);
+  --color-info-bg: var(--color-info-bg);
+  --color-warning: var(--color-warning);
+  --color-warning-bg: var(--color-warning-bg);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-bg: var(--color-destructive-bg);
 
   /* --- Semantic colors --- */
   --color-background: var(--background);

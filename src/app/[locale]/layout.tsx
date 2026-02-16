@@ -6,6 +6,10 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { themeScript } from "@/lib/theme-script";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { JsonLd } from "@/components/schema/JsonLd";
+import { generateGlobalGraph } from "@/lib/schema";
 import "../globals.css";
 
 const inter = Inter({
@@ -45,12 +49,15 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <JsonLd data={generateGlobalGraph()} />
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

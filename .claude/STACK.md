@@ -16,6 +16,9 @@
 | Email | TransIP SMTP (native nodemailer) | TBD |
 | Validation | Zod | TBD |
 | Charts | Recharts | TBD |
+| Component Variants | class-variance-authority (CVA) | ^0.7.1 |
+| Class Merging | clsx + tailwind-merge | ^2.1.1 / ^3.4.1 |
+| Accessible Primitives | @radix-ui/react-slot | ^1.2.4 |
 
 ## Infrastructure
 
@@ -43,7 +46,8 @@
 | Typography | Inter (via next/font) |
 | Icons | Lucide React |
 | Style | Clean & Minimalist |
-| Color Palette | TBD (moodboard pending) |
+| Color Palette | Navy + Gold + Teal (implemented) |
+| Component Pattern | CVA variants, cn() utility, Radix Slot |
 
 ## Locales
 

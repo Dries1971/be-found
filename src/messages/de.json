@@ -20,8 +20,31 @@
     "cta_secondary": "Unsere Forschung Entdecken"
   },
   "footer": {
+    "company": "Unternehmen",
+    "about": "Über uns",
+    "editorial_process": "Redaktionsprozess",
+    "ai_policy": "KI-Richtlinie",
+    "services_heading": "Dienstleistungen",
+    "geo_consulting": "GEO Beratung",
+    "ai_content_strategy": "KI Content Strategie",
+    "geo_audit": "GEO Audit",
+    "products_heading": "Produkte",
+    "bloffee": "Bloffee",
+    "geo_score": "GEO-Score",
+    "resources": "Ressourcen",
+    "blog": "Blog",
+    "research": "GEO Statistiken 2026",
+    "pricing": "Preise",
+    "newsletter_title": "Bleiben Sie der KI-Suche voraus",
+    "newsletter_description": "GEO-Einblicke, Daten und Strategien. Kein Spam.",
+    "newsletter_placeholder": "sie@beispiel.de",
+    "newsletter_button": "Abonnieren",
+    "newsletter_coming_soon": "Newsletter startet bald",
+    "privacy_badge": "Keine Tracking-Cookies",
+    "privacy_badge_description": "Wir respektieren Ihre Privatsphäre. Null Tracker, null Cookies.",
     "copyright": "Be-Found. Alle Rechte vorbehalten.",
     "privacy": "Datenschutzrichtlinie",
-    "terms": "Nutzungsbedingungen"
+    "terms": "Nutzungsbedingungen",
+    "impressum": "Impressum"
   }
 }

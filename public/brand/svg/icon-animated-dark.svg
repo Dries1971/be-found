@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="goldGI" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B" />
+      <stop offset="100%" style="stop-color:#D97706" />
+    </linearGradient>
+    <radialGradient id="irisGI" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.9" />
+      <stop offset="55%" style="stop-color:#D97706;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.8" />
+    </radialGradient>
+  </defs>
+
+  <style>
+    @keyframes pupilI {
+      0%, 5% { transform: translate(-1.5px, 0.5px); }
+      15% { transform: translate(1.5px, -0.5px); }
+      30% { transform: translate(-0.5px, -0.5px); }
+      50%, 65% { transform: translate(0, 0); }
+      80% { transform: translate(1px, 0.5px); }
+      95%, 100% { transform: translate(-1.5px, 0.5px); }
+    }
+    @keyframes sparkleI {
+      0%, 42% { transform: scale(0.7); opacity: 0.5; }
+      50% { transform: scale(1.3); opacity: 1; }
+      55%, 62% { transform: scale(1); opacity: 1; }
+      75%, 100% { transform: scale(0.7); opacity: 0.5; }
+    }
+    @keyframes blinkI {
+      0%, 84% { transform: scaleY(1); }
+      86% { transform: scaleY(0.05); }
+      88%, 100% { transform: scaleY(1); }
+    }
+    .pupilI { animation: pupilI 5s cubic-bezier(0.4,0,0.2,1) infinite; }
+    .sparkleI { animation: sparkleI 5s ease-in-out infinite; transform-origin: 32px 32px; }
+    .blinkI { animation: blinkI 5s ease-in-out infinite; transform-origin: 32px 32px; }
+  </style>
+
+  <g class="blinkI">
+    <!-- Outer glow -->
+    <path d="M4,32 Q32,6 60,32" fill="none" stroke="#F59E0B" stroke-width="1.2" opacity="0.12"/>
+    <path d="M4,32 Q32,58 60,32" fill="none" stroke="#F59E0B" stroke-width="1.2" opacity="0.12"/>
+
+    <!-- Eye lids -->
+    <path d="M6,32 Q32,8 58,32" fill="none" stroke="url(#goldGI)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M6,32 Q32,56 58,32" fill="none" stroke="url(#goldGI)" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Iris -->
+    <circle cx="32" cy="32" r="14" fill="none" stroke="#D97706" stroke-width="1.2" opacity="0.4"/>
+    <circle cx="32" cy="32" r="12" fill="url(#irisGI)" opacity="0.35"/>
+
+    <!-- Pupil -->
+    <g class="pupilI">
+      <circle cx="32" cy="32" r="8" fill="#020617"/>
+      <circle cx="32" cy="32" r="8" fill="none" stroke="#D97706" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="37" cy="27" r="2.5" fill="#F8FAFC" opacity="0.5"/>
+      <circle cx="27" cy="37" r="1" fill="#F8FAFC" opacity="0.2"/>
+    </g>
+
+    <!-- AI sparkle -->
+    <g class="sparkleI">
+      <path d="M32,24 L34,29.5 L40,32 L34,34.5 L32,40 L30,34.5 L24,32 L30,29.5 Z" fill="#F59E0B"/>
+      <path d="M32,27 L33,30.5 L36,32 L33,33.5 L32,37 L31,33.5 L28,32 L31,30.5 Z" fill="#FBBF24" opacity="0.6"/>
+    </g>
+  </g>
+</svg>

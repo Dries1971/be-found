@@ -20,8 +20,31 @@
     "cta_secondary": "Explore Nossa Pesquisa"
   },
   "footer": {
+    "company": "Empresa",
+    "about": "Sobre nós",
+    "editorial_process": "Processo editorial",
+    "ai_policy": "Política de IA",
+    "services_heading": "Serviços",
+    "geo_consulting": "Consultoria GEO",
+    "ai_content_strategy": "Estratégia de conteúdo IA",
+    "geo_audit": "Auditoria GEO",
+    "products_heading": "Produtos",
+    "bloffee": "Bloffee",
+    "geo_score": "GEO-Score",
+    "resources": "Recursos",
+    "blog": "Blog",
+    "research": "Estatísticas GEO 2026",
+    "pricing": "Preços",
+    "newsletter_title": "Fique à frente da busca IA",
+    "newsletter_description": "Receba análises GEO, dados e estratégias. Sem spam.",
+    "newsletter_placeholder": "voce@exemplo.pt",
+    "newsletter_button": "Inscrever-se",
+    "newsletter_coming_soon": "Newsletter em breve",
+    "privacy_badge": "Sem cookies de rastreamento",
+    "privacy_badge_description": "Respeitamos sua privacidade. Zero rastreadores, zero cookies.",
     "copyright": "Be-Found. Todos os direitos reservados.",
     "privacy": "Política de privacidade",
-    "terms": "Termos de serviço"
+    "terms": "Termos de serviço",
+    "impressum": "Aviso legal"
   }
 }

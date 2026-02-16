@@ -20,8 +20,31 @@
     "cta_secondary": "Explorez Nos Recherches"
   },
   "footer": {
+    "company": "Entreprise",
+    "about": "À propos",
+    "editorial_process": "Processus éditorial",
+    "ai_policy": "Politique IA",
+    "services_heading": "Services",
+    "geo_consulting": "Conseil GEO",
+    "ai_content_strategy": "Stratégie de contenu IA",
+    "geo_audit": "Audit GEO",
+    "products_heading": "Produits",
+    "bloffee": "Bloffee",
+    "geo_score": "GEO-Score",
+    "resources": "Ressources",
+    "blog": "Blog",
+    "research": "Statistiques GEO 2026",
+    "pricing": "Tarifs",
+    "newsletter_title": "Gardez une longueur d'avance",
+    "newsletter_description": "Recevez des analyses GEO, données et stratégies. Pas de spam.",
+    "newsletter_placeholder": "vous@exemple.fr",
+    "newsletter_button": "S'abonner",
+    "newsletter_coming_soon": "Newsletter bientôt disponible",
+    "privacy_badge": "Aucun cookie de suivi",
+    "privacy_badge_description": "Nous respectons votre vie privée. Zéro traceur, zéro cookie.",
     "copyright": "Be-Found. Tous droits réservés.",
     "privacy": "Politique de confidentialité",
-    "terms": "Conditions d'utilisation"
+    "terms": "Conditions d'utilisation",
+    "impressum": "Mentions légales"
   }
 }
