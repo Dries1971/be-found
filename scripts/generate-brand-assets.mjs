@@ -26,7 +26,6 @@ const SOCIAL_DIR = join(BRAND_DIR, 'social');
 
 // Midnight background for dark variants
 const MIDNIGHT = { r: 2, g: 6, b: 23, alpha: 1 }; // #020617
-const NAVY = { r: 15, g: 23, b: 42, alpha: 1 };    // #0F172A
 const SNOW = { r: 248, g: 250, b: 252, alpha: 1 };  // #F8FAFC
 
 async function svgToPng(svgPath, outputPath, width, height, opts = {}) {
@@ -108,7 +107,7 @@ async function generateFavicons(svgPath) {
   console.log('  Favicons: 16, 32, 48, 192, 512, apple-touch-icon, mstile, SVG');
 }
 
-async function generateOGImage(logoSvgPath, outputPath, background, textColor) {
+async function generateOGImage(logoSvgPath, outputPath, background) {
   // Create a 1200x630 OG image with logo centered
   const logoSvg = readFileSync(logoSvgPath);
 
@@ -179,8 +178,8 @@ async function main() {
 
   // --- OG / SOCIAL IMAGES ---
   console.log('\n[Social / OG Images]');
-  await generateOGImage(join(SVG_DIR, 'logo-dark.svg'), join(SOCIAL_DIR, 'og-dark.png'), MIDNIGHT, '#F8FAFC');
-  await generateOGImage(join(SVG_DIR, 'logo-light.svg'), join(SOCIAL_DIR, 'og-light.png'), SNOW, '#0F172A');
+  await generateOGImage(join(SVG_DIR, 'logo-dark.svg'), join(SOCIAL_DIR, 'og-dark.png'), MIDNIGHT);
+  await generateOGImage(join(SVG_DIR, 'logo-light.svg'), join(SOCIAL_DIR, 'og-light.png'), SNOW);
 
   // Twitter card (same as OG but 1200x600 for summary_large_image)
   const twitterLogoSvg = readFileSync(join(SVG_DIR, 'logo-dark.svg'));

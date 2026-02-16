@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 
 type LogoVariant = 'full' | 'icon';
 type LogoSize = 'sm' | 'md' | 'lg';
@@ -46,15 +46,17 @@ export function Logo({
   const w = width ?? dims.w;
   const h = height ?? dims.h;
 
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
+  const subscribe = useCallback((cb: () => void) => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    mq.addEventListener('change', cb);
+    return () => mq.removeEventListener('change', cb);
   }, []);
+
+  const reducedMotion = useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () => false,
+  );
 
   const shouldAnimate = animated && !reducedMotion;
 
