@@ -46,3 +46,5 @@ export type { FAQSectionProps, FAQItem } from "./FAQSection";
 
 export { CiteThisBlock } from "./CiteThisBlock";
 export type { CiteThisBlockProps, CitationData } from "./CiteThisBlock";
+
+export { ContactForm } from "./ContactForm";

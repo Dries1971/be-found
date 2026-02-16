@@ -15,8 +15,8 @@ export interface ServiceItem {
   description: string;
   /** Icon element (e.g. Lucide icon) */
   icon: ReactNode;
-  /** Link to service detail page */
-  href: string;
+  /** Link to service detail page (omit for feature-only display) */
+  href?: string;
 }
 
 export interface ServiceGridProps {
@@ -66,12 +66,8 @@ export function ServiceGrid({
             services.length >= 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
           )}
         >
-          {services.map((service) => (
-            <a
-              key={service.name}
-              href={service.href}
-              className="group block"
-            >
+          {services.map((service) => {
+            const card = (
               <Card
                 intent="product"
                 className="h-full"
@@ -83,14 +79,28 @@ export function ServiceGrid({
                   <CardTitle>{service.name}</CardTitle>
                   <CardDescription>{service.description}</CardDescription>
                 </CardHeader>
-                <CardFooter>
-                  <span className="text-sm font-medium text-gold group-hover:underline">
-                    Learn more &rarr;
-                  </span>
-                </CardFooter>
+                {service.href && (
+                  <CardFooter>
+                    <span className="text-sm font-medium text-gold group-hover:underline">
+                      Learn more &rarr;
+                    </span>
+                  </CardFooter>
+                )}
               </Card>
-            </a>
-          ))}
+            );
+
+            return service.href ? (
+              <a
+                key={service.name}
+                href={service.href}
+                className="group block"
+              >
+                {card}
+              </a>
+            ) : (
+              <div key={service.name}>{card}</div>
+            );
+          })}
         </div>
       </div>
     </section>
