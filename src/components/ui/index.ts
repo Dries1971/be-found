@@ -35,3 +35,19 @@ export { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
 
 export { Quote } from "./Quote";
 export type { QuoteProps } from "./Quote";
+
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+} from "./Table";
+
+export { Progress } from "./Progress";
+export type { ProgressProps } from "./Progress";
+
+export { CodeBlock } from "./CodeBlock";
+export type { CodeBlockProps } from "./CodeBlock";
