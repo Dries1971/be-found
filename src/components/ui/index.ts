@@ -23,3 +23,15 @@ export type { InputProps, TextareaProps, SelectProps, LabelProps } from "./Input
 
 export { Stat } from "./Stat";
 export type { StatProps } from "./Stat";
+
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./Accordion";
+
+export { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
+
+export { Quote } from "./Quote";
+export type { QuoteProps } from "./Quote";

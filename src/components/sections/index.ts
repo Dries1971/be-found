@@ -37,3 +37,12 @@ export type { LatestInsightsProps, BlogPost } from "./LatestInsights";
 
 export { PricingSection } from "./PricingSection";
 export type { PricingSectionProps, PricingTier } from "./PricingSection";
+
+export { ComparisonTable } from "./ComparisonTable";
+export type { ComparisonTableProps, ComparisonRow } from "./ComparisonTable";
+
+export { FAQSection } from "./FAQSection";
+export type { FAQSectionProps, FAQItem } from "./FAQSection";
+
+export { CiteThisBlock } from "./CiteThisBlock";
+export type { CiteThisBlockProps, CitationData } from "./CiteThisBlock";
