@@ -28,6 +28,15 @@ export const metadata: Metadata = {
   title: "Be-Found.online — GEO & AI Visibility Authority Hub",
   description:
     "Expert guidance on Generative Engine Optimization (GEO) and AI visibility. Helping businesses get found by AI-powered search engines.",
+  icons: {
+    icon: [
+      { url: "/brand/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/brand/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/brand/favicon/apple-touch-icon.png",
+  },
+  manifest: "/brand/favicon/site.webmanifest",
 };
 
 export default async function LocaleLayout({

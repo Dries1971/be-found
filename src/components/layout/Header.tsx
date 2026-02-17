@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { Logo } from "@/components/brand/Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileMenu } from "./MobileMenu";
@@ -29,9 +30,12 @@ export async function Header() {
     <header className="sticky top-0 z-30 border-b border-border/50 bg-background/80 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-0.5 text-lg font-bold tracking-tight">
-          <span className="text-foreground">Be-Found</span>
-          <span className="text-gold">.</span>
+        <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight">
+          <Logo variant="icon" size="sm" animated />
+          <span>
+            <span className="text-foreground">Be-Found</span>
+            <span className="text-gold">.</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}

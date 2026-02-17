@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { Logo } from "@/components/brand/Logo";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -79,9 +80,12 @@ export async function Footer() {
         <div className="flex flex-col items-center gap-4 py-8 sm:flex-row sm:justify-between">
           {/* Left: logo + copyright */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="text-lg font-bold tracking-tight">
-              <span className="text-foreground">Be-Found</span>
-              <span className="text-gold">.</span>
+            <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight">
+              <Logo variant="icon" size="sm" animated={false} />
+              <span>
+                <span className="text-foreground">Be-Found</span>
+                <span className="text-gold">.</span>
+              </span>
             </Link>
             <span className="text-sm text-foreground-muted">
               &copy; {year} {t("copyright")}
