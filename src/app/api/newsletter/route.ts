@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { randomBytes } from "crypto";
 import getDb from "@/lib/db";
+import { sendConfirmationEmail } from "@/lib/email";
 
 const subscribeSchema = z.object({
   email: z.string().email().max(320),
@@ -94,9 +95,8 @@ export async function POST(request: Request) {
       `;
     }
 
-    // TODO: Send confirmation email via TransIP SMTP when ED-7 is resolved
-    // The email should contain a link: https://be-found.online/api/newsletter/confirm?token={token}
-    // For now, subscribers are saved with 'pending' status.
+    // Send double opt-in confirmation email
+    await sendConfirmationEmail({ email, token, locale });
 
     return NextResponse.json({ success: true });
   } catch (error) {

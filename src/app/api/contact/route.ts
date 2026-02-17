@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import getDb from "@/lib/db";
+import { sendContactNotification } from "@/lib/email";
 
 const contactSchema = z.object({
   name: z.string().min(1).max(200),
@@ -80,8 +81,10 @@ export async function POST(request: Request) {
       VALUES (${name}, ${email}, ${company}, ${message}, ${locale})
     `;
 
-    // TODO: Send email notification via TransIP SMTP when ED-7 is resolved
-    // For now, submissions are saved to the database and can be retrieved manually.
+    // Send email notification (non-blocking — don't fail the request if email fails)
+    sendContactNotification({ name, email, company, message, locale }).catch((err) =>
+      console.error("Failed to send contact notification email:", err),
+    );
 
     return NextResponse.json({ success: true });
   } catch (error) {
