@@ -1,29 +1,53 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { useTranslations } from "next-intl";
+import { useState, useRef, useEffect, type FormEvent } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import { Input, Textarea, Label } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Alert, AlertDescription } from "@/components/ui/Alert";
 
 /**
- * Contact form with client-side state.
- *
- * Phase 1: UI only — form submission via API route comes later
- * when TransIP SMTP credentials are available.
+ * Contact form with honeypot, time-based bot detection, and API submission.
+ * Saves to PostgreSQL. Email notification added when TransIP SMTP is ready.
  */
 export function ContactForm() {
   const t = useTranslations("contact");
+  const locale = useLocale();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const formStartedRef = useRef<number>(0);
+
+  useEffect(() => {
+    formStartedRef.current = Date.now();
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
 
-    // Phase 1: simulate submission (API route = Sprint 3)
-    // In production this will POST to /api/contact
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setStatus("success");
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-form-started": String(formStartedRef.current),
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          company: formData.get("company") || "",
+          message: formData.get("message"),
+          locale,
+          website: formData.get("website") || "",
+        }),
+      });
+
+      if (!res.ok) throw new Error("Submit failed");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
