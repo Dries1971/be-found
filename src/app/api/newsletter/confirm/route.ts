@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import sql from "@/lib/db";
+import getDb from "@/lib/db";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -10,6 +10,7 @@ export async function GET(request: Request) {
   }
 
   try {
+    const sql = getDb();
     const rows = await sql`
       SELECT id, token_expires_at FROM subscribers
       WHERE token = ${token} AND status = 'pending'

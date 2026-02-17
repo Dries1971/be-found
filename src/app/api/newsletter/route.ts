@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { randomBytes } from "crypto";
-import sql from "@/lib/db";
+import getDb from "@/lib/db";
 
 const subscribeSchema = z.object({
   email: z.string().email().max(320),
@@ -64,6 +64,8 @@ export async function POST(request: Request) {
     // Generate confirmation token (double opt-in)
     const token = randomBytes(32).toString("hex");
     const tokenExpiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+
+    const sql = getDb();
 
     // Upsert: if email exists and is pending, update token. If confirmed, ignore.
     const existing = await sql`

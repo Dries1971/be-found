@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import sql from "@/lib/db";
+import getDb from "@/lib/db";
 
 const contactSchema = z.object({
   name: z.string().min(1).max(200),
@@ -74,6 +74,7 @@ export async function POST(request: Request) {
     }
 
     // Save to database
+    const sql = getDb();
     await sql`
       INSERT INTO contact_submissions (name, email, company, message, locale)
       VALUES (${name}, ${email}, ${company}, ${message}, ${locale})
