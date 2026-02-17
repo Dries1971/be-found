@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { useCallback, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
@@ -28,6 +29,7 @@ const navItems: NavItem[] = [
 
 export function MobileMenu() {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const toggle = useCallback(() => setOpen((prev) => !prev), []);
@@ -156,9 +158,11 @@ export function MobileMenu() {
                 <Link
                   href={item.href}
                   onClick={close}
+                  aria-current={pathname.endsWith(item.href) || (item.href === "/" && pathname.match(/^\/[a-z]{2}$/)) ? "page" : undefined}
                   className={cn(
                     "flex items-center rounded-[var(--radius-md)] px-3 py-2.5",
-                    "text-sm text-foreground-muted",
+                    "text-sm",
+                    pathname.endsWith(item.href) ? "text-foreground font-medium" : "text-foreground-muted",
                     "hover:text-foreground hover:bg-foreground/5",
                     "transition-colors duration-[var(--duration-fast)]"
                   )}

@@ -66,6 +66,7 @@ export function ContactForm() {
           name="name"
           placeholder={t("form_name_placeholder")}
           required
+          aria-required="true"
           disabled={status === "sending"}
         />
       </div>
@@ -80,6 +81,7 @@ export function ContactForm() {
           type="email"
           placeholder={t("form_email_placeholder")}
           required
+          aria-required="true"
           disabled={status === "sending"}
         />
       </div>
@@ -104,6 +106,7 @@ export function ContactForm() {
           placeholder={t("form_message_placeholder")}
           rows={5}
           required
+          aria-required="true"
           disabled={status === "sending"}
         />
       </div>
@@ -119,13 +122,13 @@ export function ContactForm() {
       </Button>
 
       {status === "success" && (
-        <Alert intent="success">
+        <Alert intent="success" id="form-status" aria-live="polite">
           <AlertDescription>{t("form_success")}</AlertDescription>
         </Alert>
       )}
 
       {status === "error" && (
-        <Alert intent="error">
+        <Alert intent="error" id="form-status" aria-live="assertive">
           <AlertDescription>{t("form_error")}</AlertDescription>
         </Alert>
       )}

@@ -16,6 +16,7 @@ export interface PageLayoutProps {
 export function PageLayout({ children, className, narrow }: PageLayoutProps) {
   return (
     <main
+      id="main-content"
       className={cn(
         "mx-auto w-full px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20",
         narrow ? "max-w-3xl" : "max-w-7xl",

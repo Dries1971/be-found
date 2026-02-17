@@ -54,10 +54,15 @@ export async function Footer() {
             <h3 className="text-sm font-semibold text-foreground">{t("newsletter_title")}</h3>
             <p className="mt-2 text-sm text-foreground-muted">{t("newsletter_description")}</p>
             <div className="mt-4 flex gap-2">
+              <label htmlFor="footer-newsletter-email" className="sr-only">
+                {t("newsletter_placeholder")}
+              </label>
               <input
+                id="footer-newsletter-email"
                 type="email"
                 placeholder={t("newsletter_placeholder")}
                 disabled
+                aria-disabled="true"
                 className="h-9 flex-1 rounded-[var(--radius-md)] border border-border bg-background px-3 text-sm text-foreground placeholder:text-foreground-muted/60 disabled:opacity-[var(--disabled-opacity)]"
               />
               <button

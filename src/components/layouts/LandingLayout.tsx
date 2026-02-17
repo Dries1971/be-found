@@ -14,7 +14,7 @@ export interface LandingLayoutProps {
  */
 export function LandingLayout({ children, className }: LandingLayoutProps) {
   return (
-    <main className={cn("flex flex-col", className)}>
+    <main id="main-content" className={cn("flex flex-col", className)}>
       {children}
     </main>
   );

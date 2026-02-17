@@ -23,6 +23,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         type={type}
+        aria-invalid={error || undefined}
         className={cn(
           baseStyles,
           "h-10 px-3 text-sm",
@@ -46,6 +47,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   function Textarea({ className, error, ...props }, ref) {
     return (
       <textarea
+        aria-invalid={error || undefined}
         className={cn(
           baseStyles,
           "min-h-[80px] px-3 py-2 text-sm",
