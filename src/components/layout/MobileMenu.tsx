@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
-type NavKey = "home" | "about" | "services" | "products" | "blog" | "research" | "pricing" | "contact";
+type NavKey = "home" | "about" | "services" | "products" | "blog" | "faq" | "pricing" | "contact";
 
 interface NavItem {
   key: NavKey;
@@ -19,9 +19,9 @@ const navItems: NavItem[] = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "services", href: "/services" },
-  { key: "products", href: "/products" },
+  { key: "products", href: "/products/bloffee" },
   { key: "blog", href: "https://cited.be-found.online", external: true },
-  { key: "research", href: "/geo-statistics" },
+  { key: "faq", href: "/faq" },
   { key: "pricing", href: "/pricing" },
   { key: "contact", href: "/contact" },
 ];

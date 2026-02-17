@@ -9,7 +9,7 @@
     "services": "Diensten",
     "products": "Producten",
     "blog": "Blog",
-    "research": "Onderzoek",
+    "faq": "FAQ",
     "pricing": "Prijzen",
     "contact": "Contact"
   },
@@ -466,18 +466,15 @@
   "footer": {
     "company": "Bedrijf",
     "about": "Over ons",
-    "editorial_process": "Redactieproces",
-    "ai_policy": "AI Beleid",
+    "faq": "FAQ",
+    "contact_link": "Contact",
     "services_heading": "Diensten",
-    "geo_consulting": "GEO Consulting",
-    "ai_content_strategy": "AI Content Strategie",
-    "geo_audit": "GEO Audit",
+    "all_services": "Alle Diensten",
     "products_heading": "Producten",
     "bloffee": "Bloffee",
     "geo_score": "GEO-Score",
     "resources": "Bronnen",
     "blog": "Blog",
-    "research": "GEO Statistieken 2026",
     "pricing": "Prijzen",
     "newsletter_title": "Blijf voorop in AI zoeken",
     "newsletter_description": "Ontvang GEO inzichten, data en strategieën. Geen spam.",
@@ -489,6 +486,7 @@
     "copyright": "Be-Found. Alle rechten voorbehouden.",
     "privacy": "Privacybeleid",
     "terms": "Algemene voorwaarden",
+    "cookies": "Cookies",
     "impressum": "Impressum"
   }
 }

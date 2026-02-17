@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Search, Shield, Users, Lightbulb } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { LandingLayout } from "@/components/layouts/LandingLayout";
+import { JsonLd } from "@/components/schema/JsonLd";
+import { generateBreadcrumbs, entityIds } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/metadata";
 import {
   HeroSection,
   ServiceGrid,
@@ -9,11 +14,47 @@ import {
   CTASection,
 } from "@/components/sections";
 
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "products" });
+  return generatePageMetadata({
+    locale,
+    path: "/products/geo-score",
+    title: t("geoscore_hero_headline"),
+    description: t("geoscore_hero_description"),
+    ogType: "service",
+    ogSubtitle: "AI Visibility Analysis",
+  });
+}
+
 export default async function GeoScorePage() {
   const t = await getTranslations("products");
 
+  const geoScoreSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "GEO-Score",
+    applicationCategory: "AnalyticsApplication",
+    operatingSystem: "Web",
+    description: "AI visibility analysis tool measuring how well your brand performs in generative engines.",
+    url: "https://geo-score.online",
+    provider: { "@id": entityIds.organization },
+    breadcrumb: generateBreadcrumbs([
+      { name: "Home", href: "/" },
+      { name: "Products", href: "/products/geo-score" },
+      { name: "GEO-Score" },
+    ]),
+  };
+
   return (
     <LandingLayout>
+      <JsonLd data={geoScoreSchema} />
       {/* Hero */}
       <HeroSection
         variant="featured"
@@ -75,6 +116,13 @@ export default async function GeoScorePage() {
         ]}
         className="scroll-mt-20"
       />
+
+      {/* Related links */}
+      <nav className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 py-8 text-sm" aria-label="Related pages">
+        <Link href="/products/bloffee" className="text-gold hover:underline">Bloffee</Link>
+        <Link href="/services" className="text-gold hover:underline">Services</Link>
+        <Link href="/pricing" className="text-gold hover:underline">Pricing</Link>
+      </nav>
 
       {/* CTA */}
       <CTASection

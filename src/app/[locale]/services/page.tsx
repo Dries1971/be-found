@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Search, FileText, CheckCircle, Settings } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { LandingLayout } from "@/components/layouts/LandingLayout";
+import { JsonLd } from "@/components/schema/JsonLd";
+import { generateBreadcrumbs, entityIds } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/metadata";
 import {
   HeroSection,
   ServiceGrid,
@@ -9,11 +14,43 @@ import {
   CTASection,
 } from "@/components/sections";
 
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "services" });
+  return generatePageMetadata({
+    locale,
+    path: "/services",
+    title: t("hero_headline"),
+    description: t("hero_description"),
+    ogType: "service",
+  });
+}
+
 export default async function ServicesPage() {
   const t = await getTranslations("services");
 
+  const serviceSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Be-Found — GEO & AI Visibility Services",
+    provider: { "@id": entityIds.organization },
+    areaServed: ["US", "GB", "AE", "NL", "DE"],
+    serviceType: "Generative Engine Optimization",
+    breadcrumb: generateBreadcrumbs([
+      { name: "Home", href: "/" },
+      { name: "Services" },
+    ]),
+  };
+
   return (
     <LandingLayout>
+      <JsonLd data={serviceSchema} />
       {/* Hero */}
       <HeroSection
         variant="dark"
@@ -34,25 +71,21 @@ export default async function ServicesPage() {
             name: t("geo_name"),
             description: t("geo_description"),
             icon: <Search size={20} />,
-            href: "/services/geo-consulting",
           },
           {
             name: t("content_name"),
             description: t("content_description"),
             icon: <FileText size={20} />,
-            href: "/services/ai-content-strategy",
           },
           {
             name: t("audit_name"),
             description: t("audit_description"),
             icon: <CheckCircle size={20} />,
-            href: "/services/geo-audit",
           },
           {
             name: t("seo_name"),
             description: t("seo_description"),
             icon: <Settings size={20} />,
-            href: "/services/technical-seo",
           },
         ]}
       />
@@ -98,6 +131,14 @@ export default async function ServicesPage() {
           { id: "faq-4", question: t("faq_4_q"), answer: t("faq_4_a") },
         ]}
       />
+
+      {/* Related links */}
+      <nav className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 py-8 text-sm" aria-label="Related pages">
+        <Link href="/pricing" className="text-gold hover:underline">Pricing</Link>
+        <Link href="/products/bloffee" className="text-gold hover:underline">Bloffee</Link>
+        <Link href="/products/geo-score" className="text-gold hover:underline">GEO-Score</Link>
+        <Link href="/faq" className="text-gold hover:underline">FAQ</Link>
+      </nav>
 
       {/* CTA */}
       <CTASection

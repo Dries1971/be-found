@@ -1,13 +1,48 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { Card, CardContent } from "@/components/ui/Card";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { JsonLd } from "@/components/schema/JsonLd";
+import { generateBreadcrumbs, entityIds } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/metadata";
+
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "contact" });
+  return generatePageMetadata({
+    locale,
+    path: "/contact",
+    title: t("page_title"),
+    description: t("page_description"),
+  });
+}
 
 export default async function ContactPage() {
   const t = await getTranslations("contact");
 
+  const contactSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Be-Found",
+    url: "https://be-found.online/contact",
+    mainEntity: { "@id": entityIds.organization },
+    breadcrumb: generateBreadcrumbs([
+      { name: "Home", href: "/" },
+      { name: "Contact" },
+    ]),
+  };
+
   return (
     <PageLayout narrow>
+      <JsonLd data={contactSchema} />
       {/* Page header */}
       <header className="mb-12 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -55,6 +90,13 @@ export default async function ContactPage() {
           </Card>
         </div>
       </div>
+
+      {/* Related links */}
+      <nav className="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm" aria-label="Related pages">
+        <Link href="/faq" className="text-gold hover:underline">FAQ</Link>
+        <Link href="/services" className="text-gold hover:underline">Services</Link>
+        <Link href="/pricing" className="text-gold hover:underline">Pricing</Link>
+      </nav>
     </PageLayout>
   );
 }

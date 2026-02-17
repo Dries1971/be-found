@@ -1,9 +1,29 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { FAQSection } from "@/components/sections";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/schema/JsonLd";
+import { generateBreadcrumbs } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/metadata";
+
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "faq" });
+  return generatePageMetadata({
+    locale,
+    path: "/faq",
+    title: t("page_title"),
+    description: t("page_description"),
+  });
+}
 
 export default async function FAQPage() {
   const t = await getTranslations("faq");
@@ -28,6 +48,12 @@ export default async function FAQPage() {
   // FAQPage Schema.org
   const faqSchema: Record<string, unknown> = {
     "@type": "FAQPage",
+    name: t("page_title"),
+    description: t("page_description"),
+    breadcrumb: generateBreadcrumbs([
+      { name: "Home", href: "/" },
+      { name: t("page_title") },
+    ]),
     mainEntity: faqItems.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -54,6 +80,14 @@ export default async function FAQPage() {
 
       {/* FAQ accordion */}
       <FAQSection items={faqItems} />
+
+      {/* Related links */}
+      <nav className="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm" aria-label="Related pages">
+        <Link href="/services" className="text-gold hover:underline">Services</Link>
+        <Link href="/pricing" className="text-gold hover:underline">Pricing</Link>
+        <Link href="/products/bloffee" className="text-gold hover:underline">Bloffee</Link>
+        <Link href="/products/geo-score" className="text-gold hover:underline">GEO-Score</Link>
+      </nav>
 
       {/* CTA */}
       <section className="mt-16 text-center">

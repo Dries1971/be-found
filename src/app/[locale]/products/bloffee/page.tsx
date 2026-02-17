@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { FileText, Globe, Clock, BarChart3 } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { LandingLayout } from "@/components/layouts/LandingLayout";
+import { JsonLd } from "@/components/schema/JsonLd";
+import { generateBreadcrumbs, entityIds } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/metadata";
 import {
   HeroSection,
   ServiceGrid,
@@ -9,11 +14,47 @@ import {
   CTASection,
 } from "@/components/sections";
 
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "products" });
+  return generatePageMetadata({
+    locale,
+    path: "/products/bloffee",
+    title: t("bloffee_hero_headline"),
+    description: t("bloffee_hero_description"),
+    ogType: "service",
+    ogSubtitle: "AI Blog Automation",
+  });
+}
+
 export default async function BloffeePage() {
   const t = await getTranslations("products");
 
+  const bloffeeSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Bloffee",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description: "AI-powered blog automation platform for GEO-optimized content.",
+    url: "https://bloffee.com",
+    provider: { "@id": entityIds.organization },
+    breadcrumb: generateBreadcrumbs([
+      { name: "Home", href: "/" },
+      { name: "Products", href: "/products/bloffee" },
+      { name: "Bloffee" },
+    ]),
+  };
+
   return (
     <LandingLayout>
+      <JsonLd data={bloffeeSchema} />
       {/* Hero */}
       <HeroSection
         variant="featured"
@@ -75,6 +116,13 @@ export default async function BloffeePage() {
         ]}
         className="scroll-mt-20"
       />
+
+      {/* Related links */}
+      <nav className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 py-8 text-sm" aria-label="Related pages">
+        <Link href="/products/geo-score" className="text-gold hover:underline">GEO-Score</Link>
+        <Link href="/services" className="text-gold hover:underline">Services</Link>
+        <Link href="/pricing" className="text-gold hover:underline">Pricing</Link>
+      </nav>
 
       {/* CTA */}
       <CTASection

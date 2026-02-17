@@ -1,15 +1,50 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/schema/JsonLd";
+import { generateBreadcrumbs, entityIds } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/metadata";
+
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "about" });
+  return generatePageMetadata({
+    locale,
+    path: "/about",
+    title: t("page_title"),
+    description: t("page_description"),
+  });
+}
 
 export default async function AboutPage() {
   const t = await getTranslations("about");
 
+  const aboutSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: t("page_title"),
+    description: t("page_description"),
+    url: "https://be-found.online/about",
+    mainEntity: { "@id": entityIds.organization },
+    breadcrumb: generateBreadcrumbs([
+      { name: "Home", href: "/" },
+      { name: t("page_title") },
+    ]),
+  };
+
   return (
     <PageLayout narrow>
+      <JsonLd data={aboutSchema} />
       {/* Page header */}
       <header className="mb-12 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -103,6 +138,14 @@ export default async function AboutPage() {
           ))}
         </div>
       </section>
+
+      {/* Related links */}
+      <nav className="mb-12 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm" aria-label="Related pages">
+        <Link href="/services" className="text-gold hover:underline">Services</Link>
+        <Link href="/pricing" className="text-gold hover:underline">Pricing</Link>
+        <Link href="/products/bloffee" className="text-gold hover:underline">Bloffee</Link>
+        <Link href="/products/geo-score" className="text-gold hover:underline">GEO-Score</Link>
+      </nav>
 
       {/* CTA */}
       <section className="text-center">

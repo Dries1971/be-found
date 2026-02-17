@@ -1,5 +1,24 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { PageLayout } from "@/components/layouts/PageLayout";
+import { generatePageMetadata } from "@/lib/metadata";
+
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "legal" });
+  return generatePageMetadata({
+    locale,
+    path: "/cookies",
+    title: t("cookies_title"),
+    description: "Cookie policy for Be-Found.online — no tracking cookies, privacy-first.",
+  });
+}
 
 export default async function CookiePage() {
   const t = await getTranslations("legal");

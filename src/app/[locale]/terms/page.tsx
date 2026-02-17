@@ -1,5 +1,24 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { PageLayout } from "@/components/layouts/PageLayout";
+import { generatePageMetadata } from "@/lib/metadata";
+
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "legal" });
+  return generatePageMetadata({
+    locale,
+    path: "/terms",
+    title: t("terms_title"),
+    description: "Terms of service for Be-Found.online — Dutch law, CC BY 4.0 content license.",
+  });
+}
 
 export default async function TermsPage() {
   const t = await getTranslations("legal");

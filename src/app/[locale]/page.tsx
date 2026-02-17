@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Search, FileText, CheckCircle, Settings } from "lucide-react";
 import { LandingLayout } from "@/components/layouts/LandingLayout";
+import { JsonLd } from "@/components/schema/JsonLd";
+import { generateBreadcrumbs, entityIds } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/metadata";
 import {
   HeroSection,
   AuthorityBar,
@@ -14,11 +18,40 @@ import {
   CTASection,
 } from "@/components/sections";
 
+import type { Locale } from "@/i18n/routing";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: locale as Locale, namespace: "home" });
+  return generatePageMetadata({
+    locale,
+    path: "/",
+    title: "Be-Found.online — GEO & AI Visibility Authority Hub",
+    description: t("hero_description"),
+  });
+}
+
 export default async function Home() {
   const t = await getTranslations("home");
 
+  const homeSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Be-Found.online — GEO & AI Visibility Authority Hub",
+    description: t("hero_description"),
+    url: "https://be-found.online",
+    isPartOf: { "@id": entityIds.website },
+    about: { "@id": entityIds.organization },
+    breadcrumb: generateBreadcrumbs([{ name: "Home" }]),
+  };
+
   return (
     <LandingLayout>
+      <JsonLd data={homeSchema} />
       {/* 1. Hero */}
       <HeroSection
         variant="featured"
@@ -99,25 +132,21 @@ export default async function Home() {
             name: t("service_geo_name"),
             description: t("service_geo_description"),
             icon: <Search size={20} />,
-            href: "/services/geo-consulting",
           },
           {
             name: t("service_ai_content_name"),
             description: t("service_ai_content_description"),
             icon: <FileText size={20} />,
-            href: "/services/ai-content-strategy",
           },
           {
             name: t("service_geo_audit_name"),
             description: t("service_geo_audit_description"),
             icon: <CheckCircle size={20} />,
-            href: "/services/geo-audit",
           },
           {
             name: t("service_seo_name"),
             description: t("service_seo_description"),
             icon: <Settings size={20} />,
-            href: "/services/technical-seo",
           },
         ]}
       />
@@ -149,7 +178,7 @@ export default async function Home() {
           },
         ]}
         ctaText={t("data_cta")}
-        ctaHref="/research"
+        ctaHref="/services"
       />
 
       {/* 7. Social proof — Testimonials */}

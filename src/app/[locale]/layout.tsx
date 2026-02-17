@@ -25,9 +25,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Be-Found.online — GEO & AI Visibility Authority Hub",
+  title: {
+    default: "Be-Found.online — GEO & AI Visibility Authority Hub",
+    template: "%s | Be-Found.online",
+  },
   description:
     "Expert guidance on Generative Engine Optimization (GEO) and AI visibility. Helping businesses get found by AI-powered search engines.",
+  metadataBase: new URL("https://be-found.online"),
   icons: {
     icon: [
       { url: "/brand/favicon/favicon.svg", type: "image/svg+xml" },

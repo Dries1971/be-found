@@ -1,0 +1,40 @@
+# Be-Found.online
+
+> The authority hub for Generative Engine Optimization (GEO) & AI visibility.
+
+Be-Found.online helps businesses get found by AI-powered search engines. We specialize in GEO (Generative Engine Optimization), the practice of optimizing content to be cited and referenced by AI systems like ChatGPT, Gemini, Perplexity, and Claude.
+
+## Core Services
+
+- **GEO Consulting**: Strategic consulting for AI visibility and generative engine optimization
+- **AI Content Strategy**: Data-driven content strategies optimized for AI citation
+- **GEO Audit**: Comprehensive analysis of your current AI visibility with actionable recommendations
+- **Technical SEO**: Foundation work ensuring search engines and AI systems can discover your content
+
+## Products
+
+- **Bloffee** (bloffee.com): AI-powered blog automation platform that creates GEO-optimized content in 6 languages
+- **GEO-Score** (geo-score.online): AI visibility analysis tool measuring how well your brand performs in generative engines
+
+## Key People
+
+- **Dries de Gelder**: Founder & GEO Strategist, 30+ years in digital strategy, SEO, and AI
+- **Joost Winnink**: Co-Founder & Technology Lead
+
+## Research & Data
+
+Be-Found publishes original research on GEO and AI visibility at cited.be-found.online, including:
+- GEO statistics and benchmarks
+- AI citation analysis
+- Generative engine optimization methodology
+- GEO-Score scoring methodology
+
+## Contact
+
+- Website: https://be-found.online
+- Email: info@be-found.online
+- LinkedIn: https://linkedin.com/in/driesdegelder
+
+## Content License
+
+Research and educational content is published under CC BY 4.0 — cite with attribution.

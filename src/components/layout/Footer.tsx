@@ -16,8 +16,8 @@ export async function Footer() {
             <h3 className="text-sm font-semibold text-foreground">{t("company")}</h3>
             <ul className="mt-4 space-y-3">
               <FooterLink href="/about">{t("about")}</FooterLink>
-              <FooterLink href="/about/editorial-process">{t("editorial_process")}</FooterLink>
-              <FooterLink href="/about/ai-policy">{t("ai_policy")}</FooterLink>
+              <FooterLink href="/contact">{t("contact_link")}</FooterLink>
+              <FooterLink href="/faq">{t("faq")}</FooterLink>
             </ul>
           </div>
 
@@ -25,9 +25,8 @@ export async function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-foreground">{t("services_heading")}</h3>
             <ul className="mt-4 space-y-3">
-              <FooterLink href="/services/geo-consulting">{t("geo_consulting")}</FooterLink>
-              <FooterLink href="/services/ai-content-strategy">{t("ai_content_strategy")}</FooterLink>
-              <FooterLink href="/services/geo-audit">{t("geo_audit")}</FooterLink>
+              <FooterLink href="/services">{t("all_services")}</FooterLink>
+              <FooterLink href="/pricing">{t("pricing")}</FooterLink>
             </ul>
           </div>
 
@@ -35,8 +34,8 @@ export async function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-foreground">{t("products_heading")}</h3>
             <ul className="mt-4 space-y-3">
-              <FooterExternalLink href="https://bloffee.com">{t("bloffee")}</FooterExternalLink>
-              <FooterExternalLink href="https://geo-score.online">{t("geo_score")}</FooterExternalLink>
+              <FooterLink href="/products/bloffee">{t("bloffee")}</FooterLink>
+              <FooterLink href="/products/geo-score">{t("geo_score")}</FooterLink>
             </ul>
           </div>
 
@@ -45,8 +44,8 @@ export async function Footer() {
             <h3 className="text-sm font-semibold text-foreground">{t("resources")}</h3>
             <ul className="mt-4 space-y-3">
               <FooterExternalLink href="https://cited.be-found.online">{t("blog")}</FooterExternalLink>
-              <FooterLink href="/geo-statistics">{t("research")}</FooterLink>
-              <FooterLink href="/pricing">{t("pricing")}</FooterLink>
+              <FooterExternalLink href="https://bloffee.com">Bloffee.com</FooterExternalLink>
+              <FooterExternalLink href="https://geo-score.online">GEO-Score.online</FooterExternalLink>
             </ul>
           </div>
 
@@ -110,6 +109,9 @@ export async function Footer() {
             </Link>
             <Link href="/impressum" className="text-xs text-foreground-muted transition-colors duration-[var(--duration-fast)] hover:text-foreground">
               {t("impressum")}
+            </Link>
+            <Link href="/cookies" className="text-xs text-foreground-muted transition-colors duration-[var(--duration-fast)] hover:text-foreground">
+              {t("cookies")}
             </Link>
             <span className="text-border">|</span>
             {/* LinkedIn */}

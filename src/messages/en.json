@@ -9,7 +9,7 @@
     "services": "Services",
     "products": "Products",
     "blog": "Blog",
-    "research": "Research",
+    "faq": "FAQ",
     "pricing": "Pricing",
     "contact": "Contact"
   },
@@ -466,18 +466,15 @@
   "footer": {
     "company": "Company",
     "about": "About",
-    "editorial_process": "Editorial Process",
-    "ai_policy": "AI Policy",
+    "faq": "FAQ",
+    "contact_link": "Contact",
     "services_heading": "Services",
-    "geo_consulting": "GEO Consulting",
-    "ai_content_strategy": "AI Content Strategy",
-    "geo_audit": "GEO Audit",
+    "all_services": "All Services",
     "products_heading": "Products",
     "bloffee": "Bloffee",
     "geo_score": "GEO-Score",
     "resources": "Resources",
     "blog": "Blog",
-    "research": "GEO Statistics 2026",
     "pricing": "Pricing",
     "newsletter_title": "Stay ahead of AI search",
     "newsletter_description": "Get GEO insights, data, and strategies. No spam.",
@@ -489,6 +486,7 @@
     "copyright": "Be-Found. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
+    "cookies": "Cookies",
     "impressum": "Impressum"
   }
 }
