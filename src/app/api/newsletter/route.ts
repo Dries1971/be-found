@@ -96,7 +96,12 @@ export async function POST(request: Request) {
     }
 
     // Send double opt-in confirmation email
-    await sendConfirmationEmail({ email, token, locale });
+    // If email fails, still return success (record is saved, email can be retried)
+    try {
+      await sendConfirmationEmail({ email, token, locale });
+    } catch (emailError) {
+      console.error("Failed to send confirmation email:", emailError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
