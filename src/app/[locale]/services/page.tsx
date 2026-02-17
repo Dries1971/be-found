@@ -42,10 +42,16 @@ export default async function ServicesPage() {
     provider: { "@id": entityIds.organization },
     areaServed: ["US", "GB", "AE", "NL", "DE"],
     serviceType: "Generative Engine Optimization",
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     breadcrumb: generateBreadcrumbs([
       { name: "Home", href: "/" },
       { name: "Services" },
     ]),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "section > div > p"],
+    },
   };
 
   return (

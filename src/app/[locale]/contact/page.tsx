@@ -33,6 +33,8 @@ export default async function ContactPage() {
     "@type": "ContactPage",
     name: "Contact Be-Found",
     url: "https://be-found.online/contact",
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     mainEntity: { "@id": entityIds.organization },
     breadcrumb: generateBreadcrumbs([
       { name: "Home", href: "/" },

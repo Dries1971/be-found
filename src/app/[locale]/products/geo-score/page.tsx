@@ -44,12 +44,18 @@ export default async function GeoScorePage() {
     operatingSystem: "Web",
     description: "AI visibility analysis tool measuring how well your brand performs in generative engines.",
     url: "https://geo-score.online",
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     provider: { "@id": entityIds.organization },
     breadcrumb: generateBreadcrumbs([
       { name: "Home", href: "/" },
       { name: "Products", href: "/products/geo-score" },
       { name: "GEO-Score" },
     ]),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "section > div > p"],
+    },
   };
 
   return (

@@ -40,6 +40,8 @@ export default async function PricingPage() {
     name: "Pricing — Be-Found.online",
     description: t("hero_description"),
     url: "https://be-found.online/pricing",
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     isPartOf: { "@id": entityIds.website },
     breadcrumb: generateBreadcrumbs([
       { name: "Home", href: "/" },

@@ -44,9 +44,15 @@ export default async function Home() {
     name: "Be-Found.online — GEO & AI Visibility Authority Hub",
     description: t("hero_description"),
     url: "https://be-found.online",
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     isPartOf: { "@id": entityIds.website },
     about: { "@id": entityIds.organization },
     breadcrumb: generateBreadcrumbs([{ name: "Home" }]),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "section > div > p"],
+    },
   };
 
   return (

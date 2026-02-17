@@ -50,6 +50,8 @@ export default async function FAQPage() {
     "@type": "FAQPage",
     name: t("page_title"),
     description: t("page_description"),
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     breadcrumb: generateBreadcrumbs([
       { name: "Home", href: "/" },
       { name: t("page_title") },

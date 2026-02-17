@@ -44,12 +44,18 @@ export default async function BloffeePage() {
     operatingSystem: "Web",
     description: "AI-powered blog automation platform for GEO-optimized content.",
     url: "https://bloffee.com",
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     provider: { "@id": entityIds.organization },
     breadcrumb: generateBreadcrumbs([
       { name: "Home", href: "/" },
       { name: "Products", href: "/products/bloffee" },
       { name: "Bloffee" },
     ]),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "section > div > p"],
+    },
   };
 
   return (

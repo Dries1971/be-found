@@ -35,11 +35,17 @@ export default async function AboutPage() {
     name: t("page_title"),
     description: t("page_description"),
     url: "https://be-found.online/about",
+    datePublished: "2026-02-17",
+    dateModified: "2026-02-17",
     mainEntity: { "@id": entityIds.organization },
     breadcrumb: generateBreadcrumbs([
       { name: "Home", href: "/" },
       { name: t("page_title") },
     ]),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["header h1", "header p"],
+    },
   };
 
   return (
