@@ -111,7 +111,7 @@ export function MobileMenu() {
       >
         {/* Close button inside panel */}
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
-          <span className="text-sm font-semibold text-foreground">Menu</span>
+          <span className="text-sm font-semibold text-foreground">{t("menu")}</span>
           <button
             type="button"
             onClick={close}

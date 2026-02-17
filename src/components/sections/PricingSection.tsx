@@ -42,6 +42,8 @@ export interface PricingSectionProps {
   currency?: string;
   /** Per-month suffix text */
   perMonthText?: string;
+  /** Label for recommended badge */
+  recommendedLabel?: string;
   /** Additional CSS classes */
   className?: string;
 }
@@ -61,6 +63,7 @@ export function PricingSection({
   customPriceLabel = "Let\u2019s discuss",
   currency = "\u20AC",
   perMonthText = "/mo",
+  recommendedLabel = "Recommended",
   className,
 }: PricingSectionProps) {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -147,7 +150,7 @@ export function PricingSection({
                     intent="category"
                     className="absolute -top-3 left-1/2 -translate-x-1/2"
                   >
-                    Recommended
+                    {recommendedLabel}
                   </Badge>
                 )}
                 <CardHeader>

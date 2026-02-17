@@ -68,6 +68,7 @@ export default async function PricingPage() {
         monthlyLabel={h("pricing_monthly")}
         annualLabel={h("pricing_annual")}
         customPriceLabel={h("pricing_custom")}
+        recommendedLabel={h("pricing_recommended")}
         tiers={[
           {
             name: h("pricing_tier1_name"),
