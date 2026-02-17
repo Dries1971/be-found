@@ -1,9 +1,11 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/brand/Logo";
+import { FooterNewsletter } from "./FooterNewsletter";
 
 export async function Footer() {
   const t = await getTranslations("footer");
+  const locale = await getLocale();
   const year = new Date().getFullYear();
 
   return (
@@ -51,29 +53,15 @@ export async function Footer() {
 
           {/* Newsletter */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <h3 className="text-sm font-semibold text-foreground">{t("newsletter_title")}</h3>
-            <p className="mt-2 text-sm text-foreground-muted">{t("newsletter_description")}</p>
-            <div className="mt-4 flex gap-2">
-              <label htmlFor="footer-newsletter-email" className="sr-only">
-                {t("newsletter_placeholder")}
-              </label>
-              <input
-                id="footer-newsletter-email"
-                type="email"
-                placeholder={t("newsletter_placeholder")}
-                disabled
-                aria-disabled="true"
-                className="h-9 flex-1 rounded-[var(--radius-md)] border border-border bg-background px-3 text-sm text-foreground placeholder:text-foreground-muted/60 disabled:opacity-[var(--disabled-opacity)]"
-              />
-              <button
-                type="button"
-                disabled
-                className="h-9 rounded-[var(--radius-md)] bg-gold px-3 text-sm font-medium text-midnight disabled:opacity-[var(--disabled-opacity)]"
-              >
-                {t("newsletter_button")}
-              </button>
-            </div>
-            <p className="mt-2 text-xs text-foreground-muted/60 italic">{t("newsletter_coming_soon")}</p>
+            <FooterNewsletter
+              title={t("newsletter_title")}
+              description={t("newsletter_description")}
+              placeholder={t("newsletter_placeholder")}
+              buttonText={t("newsletter_button")}
+              successMessage={t("newsletter_success")}
+              errorMessage={t("newsletter_error")}
+              locale={locale}
+            />
           </div>
         </div>
 
