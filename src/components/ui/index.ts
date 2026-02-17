@@ -51,3 +51,7 @@ export type { ProgressProps } from "./Progress";
 
 export { CodeBlock } from "./CodeBlock";
 export type { CodeBlockProps } from "./CodeBlock";
+
+export { FadeIn } from "./FadeIn";
+
+export { Skeleton } from "./Skeleton";

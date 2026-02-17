@@ -18,6 +18,8 @@ import {
   CTASection,
 } from "@/components/sections";
 
+import { FadeIn } from "@/components/ui/FadeIn";
+
 import type { Locale } from "@/i18n/routing";
 
 interface PageProps {
@@ -82,6 +84,7 @@ export default async function Home() {
       />
 
       {/* 3. Problem / Solution */}
+      <FadeIn animation="fade-in-up">
       <ProblemSolution
         problemBadge={t("problem_badge")}
         problemStat={t("problem_stat")}
@@ -94,8 +97,10 @@ export default async function Home() {
         solutionHeadline={t("solution_headline")}
         solutionDescription={t("solution_description")}
       />
+      </FadeIn>
 
       {/* 4. Ecosystem — Bloffee + GEO-Score */}
+      <FadeIn animation="fade-in-up" delay={100}>
       <EcosystemSection
         title={t("ecosystem_title")}
         subtitle={t("ecosystem_subtitle")}
@@ -128,8 +133,10 @@ export default async function Home() {
           },
         ]}
       />
+      </FadeIn>
 
       {/* 5. Services */}
+      <FadeIn animation="fade-in-up">
       <ServiceGrid
         title={t("services_title")}
         subtitle={t("services_subtitle")}
@@ -156,8 +163,10 @@ export default async function Home() {
           },
         ]}
       />
+      </FadeIn>
 
       {/* 6. Data showcase */}
+      <FadeIn animation="fade-in-up">
       <DataShowcase
         title={t("data_title")}
         subtitle={t("data_subtitle")}
@@ -186,8 +195,10 @@ export default async function Home() {
         ctaText={t("data_cta")}
         ctaHref="/services"
       />
+      </FadeIn>
 
       {/* 7. Social proof — Testimonials */}
+      <FadeIn animation="fade-in-up">
       <TestimonialSection
         title={t("testimonials_title")}
         subtitle={t("testimonials_subtitle")}
@@ -212,8 +223,10 @@ export default async function Home() {
           },
         ]}
       />
+      </FadeIn>
 
       {/* 8. Team */}
+      <FadeIn animation="fade-in-up">
       <TeamSection
         title={t("team_title")}
         subtitle={t("team_subtitle")}
@@ -231,8 +244,10 @@ export default async function Home() {
           },
         ]}
       />
+      </FadeIn>
 
       {/* 9. Latest insights — mock data for Phase 1 */}
+      <FadeIn animation="fade-in-up">
       <LatestInsights
         title={t("insights_title")}
         subtitle={t("insights_subtitle")}
@@ -265,8 +280,10 @@ export default async function Home() {
         viewAllHref="https://cited.be-found.online"
         viewAllText={t("insights_view_all")}
       />
+      </FadeIn>
 
       {/* 10. Final CTA */}
+      <FadeIn animation="scale-in">
       <CTASection
         variant="audit"
         headline={t("cta_headline")}
@@ -275,6 +292,7 @@ export default async function Home() {
         buttonHref="/contact"
         subtext={t("cta_subtext")}
       />
+      </FadeIn>
     </LandingLayout>
   );
 }
