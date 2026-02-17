@@ -388,36 +388,36 @@ Een taak is "Done" wanneer:
 
 #### Week 9: Testing + Fixes
 
-| # | Taak | Size | Uren | Wie (R) | Ref |
-|---|---|---|---|---|---|
-| 5.01 | Vitest setup + unit tests (schema validatie, utils, components) | L | 14 | CC | H14 |
-| 5.02 | Playwright setup + E2E tests (cross-browser, responsive, forms, navigation) | L | 14 | CC | H14 |
-| 5.03 | Lighthouse audit alle pagina's + optimalisatie tot ≥ 95 | L | 10 | CC | H8 |
-| 5.04 | WCAG 2.1 AA audit + fixes (contrast, keyboard, screen reader, focus) | M | 8 | CC | H8 |
-| 5.05 | Cross-browser testing (Chrome, Firefox, Safari, Edge) | M | 6 | Joost + CC | H8 |
-| 5.06 | Mobile + tablet handmatige QA (320px, 768px, 1024px, 1440px) | M | 6 | Joost | H8 |
-| 5.07 | Schema.org validatie (Google Rich Results Test op elke paginatype) | S | 3 | CC | H7 |
-| 5.08 | Bug fixes uit testing | L | 12 | CC | — |
+| # | Taak | Size | Uren | Wie (R) | Ref | Status |
+|---|---|---|---|---|---|---|
+| 5.01 | Vitest setup + unit tests (schema validatie, utils, components) | L | 14 | CC | H14 | ✅ DONE |
+| 5.02 | Playwright setup + E2E tests (cross-browser, responsive, forms, navigation) | L | 14 | CC | H14 | ✅ DONE |
+| 5.03 | Lighthouse audit alle pagina's + optimalisatie tot ≥ 95 | L | 10 | CC | H8 | ✅ DONE |
+| 5.04 | WCAG 2.1 AA audit + fixes (contrast, keyboard, screen reader, focus) | M | 8 | CC | H8 | ✅ DONE |
+| 5.05 | Cross-browser testing (Chrome, Firefox, Safari, Edge) | M | 6 | Joost + CC | H8 | ⬜ |
+| 5.06 | Mobile + tablet handmatige QA (320px, 768px, 1024px, 1440px) | M | 6 | Joost | H8 | ⬜ |
+| 5.07 | Schema.org validatie (Google Rich Results Test op elke paginatype) | S | 3 | CC | H7 | ✅ DONE |
+| 5.08 | Bug fixes uit testing | L | 12 | CC | — | ⬜ |
 
 **Week 9 subtotaal**: ~67 uur CC, ~12 uur Joost
 
 #### Week 10: Polish + Launch
 
-| # | Taak | Size | Uren | Wie (R) | Ref |
-|---|---|---|---|---|---|
-| 5.09 | CSS animations (fade-ins, hover states, scroll reveals) | M | 8 | CC | H26 |
-| 5.10 | View Transitions (page transitions) | S | 4 | CC | H26 |
-| 5.11 | Loading states (skeleton pulse) | S | 3 | CC | H26 |
-| 5.12 | Rate limiting finaliseren op alle API routes | S | 3 | CC | H21 |
-| 5.13 | Storybook setup + stories voor alle components | L | 14 | CC | H9 |
-| 5.14 | Final bug fixes + polish | M | 8 | CC | — |
-| 5.15 | Pre-launch checklist doorlopen (MASTERPLAN Verificatie sectie) | M | 4 | CC + Joost | Verificatie |
-| 5.16 | Email signup flow testen (signup → bevestigingsmail → confirmed in DB) | S | 2 | Joost | H23 |
-| 5.17 | Gated content flow testen (signup → email → download) | S | 2 | Joost | H18 |
-| 5.18 | Dries final sign-off op ALLE pagina's | — | 8 | Dries | — |
-| 5.19 | DNS switch: staging → production | XS | 1 | Dries + CC | H15 |
-| 5.20 | Post-deploy verificatie (health check, monitoring, schema) | S | 2 | CC + Joost | H15, H20 |
-| 5.21 | **🚀 LAUNCH** | — | — | Dries | — |
+| # | Taak | Size | Uren | Wie (R) | Ref | Status |
+|---|---|---|---|---|---|---|
+| 5.09 | CSS animations (fade-ins, hover states, scroll reveals) | M | 8 | CC | H26 | ✅ DONE |
+| 5.10 | View Transitions (page transitions) | S | 4 | CC | H26 | ✅ DONE |
+| 5.11 | Loading states (skeleton pulse) | S | 3 | CC | H26 | ✅ DONE |
+| 5.12 | Rate limiting finaliseren op alle API routes | S | 3 | CC | H21 | ✅ DONE |
+| 5.13 | Storybook setup + stories voor alle components | L | 14 | CC | H9 | ✅ DONE |
+| 5.14 | Final bug fixes + polish | M | 8 | CC | — | ✅ DONE |
+| 5.15 | Pre-launch checklist doorlopen (MASTERPLAN Verificatie sectie) | M | 4 | CC + Joost | Verificatie | ⬜ |
+| 5.16 | Email signup flow testen (signup → bevestigingsmail → confirmed in DB) | S | 2 | Joost | H23 | ⬜ |
+| 5.17 | Gated content flow testen (signup → email → download) | S | 2 | Joost | H18 | ⬜ |
+| 5.18 | Dries final sign-off op ALLE pagina's | — | 8 | Dries | — | ⬜ |
+| 5.19 | DNS switch: staging → production | XS | 1 | Dries + CC | H15 | ⬜ |
+| 5.20 | Post-deploy verificatie (health check, monitoring, schema) | S | 2 | CC + Joost | H15, H20 | ⬜ |
+| 5.21 | **🚀 LAUNCH** | — | — | Dries | — | ⬜ |
 
 **Week 10 subtotaal**: ~49 uur CC, ~8 uur Dries, ~8 uur Joost
 
