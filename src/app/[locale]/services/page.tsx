@@ -40,6 +40,7 @@ export default async function ServicesPage() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "Be-Found — GEO & AI Visibility Services",
+    url: "https://be-found.online/services",
     provider: { "@id": entityIds.organization },
     areaServed: ["US", "GB", "AE", "NL", "DE"],
     serviceType: "Generative Engine Optimization",

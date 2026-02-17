@@ -5,7 +5,7 @@ import { getLocale } from "next-intl/server";
 import { ArticleLayout } from "@/components/layouts/ArticleLayout";
 import { Badge } from "@/components/ui/Badge";
 import { JsonLd } from "@/components/schema/JsonLd";
-import { entityIds } from "@/lib/schema";
+import { entityIds, generateBreadcrumbs } from "@/lib/schema";
 import {
   getPillarPage,
   getAllPillarSlugs,
@@ -95,6 +95,14 @@ export default async function PillarPageRoute({ params }: PillarPageProps) {
     ...(fm.license === "cc-by-4.0"
       ? { license: "https://creativecommons.org/licenses/by/4.0/" }
       : {}),
+    breadcrumb: generateBreadcrumbs([
+      { name: "Home", href: "/" },
+      { name: fm.title },
+    ]),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "header p"],
+    },
   };
 
   // Sidebar: Table of Contents placeholder + metadata
