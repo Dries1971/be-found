@@ -19,6 +19,7 @@ import {
 } from "@/components/sections";
 
 import { FadeIn } from "@/components/ui/FadeIn";
+import { AnalyzeTeaser } from "@/components/analyze/AnalyzeTeaser";
 
 import type { Locale } from "@/i18n/routing";
 
@@ -82,6 +83,9 @@ export default async function Home() {
           { value: t("authority_clients") },
         ]}
       />
+
+      {/* Free AI visibility check */}
+      <AnalyzeTeaser />
 
       {/* 3. Problem / Solution */}
       <FadeIn animation="fade-in-up">

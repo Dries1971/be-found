@@ -14,6 +14,7 @@ import {
   CTASection,
 } from "@/components/sections";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { AnalyzeTeaser } from "@/components/analyze/AnalyzeTeaser";
 
 import type { Locale } from "@/i18n/routing";
 
@@ -138,6 +139,8 @@ export default async function GeoScorePage() {
       </nav>
 
       {/* CTA */}
+      <AnalyzeTeaser />
+
       <FadeIn animation="scale-in">
         <CTASection
           variant="audit"

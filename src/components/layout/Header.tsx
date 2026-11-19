@@ -5,7 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileMenu } from "./MobileMenu";
 
-type NavKey = "home" | "about" | "services" | "products" | "blog" | "faq" | "pricing" | "contact";
+type NavKey = "home" | "about" | "services" | "products" | "analyze" | "blog" | "faq" | "pricing" | "contact";
 
 interface NavItem {
   key: NavKey;
@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
   { key: "about", href: "/about" },
   { key: "services", href: "/services" },
   { key: "products", href: "/products/bloffee" },
+  { key: "analyze", href: "/analyze" },
   { key: "blog", href: "https://cited.be-found.online", external: true },
   { key: "pricing", href: "/pricing" },
   { key: "faq", href: "/faq" },

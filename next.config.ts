@@ -6,11 +6,13 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 // Content Security Policy — unsafe-inline needed for Next.js inline scripts/styles
 const cspDirectives = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  // challenges.cloudflare.com = Turnstile bot check on /analyze
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' blob: data:",
   "font-src 'self'",
-  "connect-src 'self' https://plausible.io",
+  "connect-src 'self' https://plausible.io https://challenges.cloudflare.com",
+  "frame-src https://challenges.cloudflare.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
