@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "@/i18n/navigation";
 
 /**
  * Polls OUR route (/api/analyses/[id]), never the API directly, with a
- * growing interval (2s → max 10s) and gives up after 5 minutes. Once the
- * analysis is final the server component re-renders with the report.
+ * growing interval (2s → max 10s) and gives up after 5 minutes.
+ *
+ * Once the analysis is final we reload the page so the server renders the
+ * report. Not router.refresh(): in a Next 16.1 production build the
+ * refreshed RSC payload (verified complete) is not applied to the waiting
+ * screen, while a full server render always is. Dev mode hides the bug.
  */
 export function WaitForResult({ id }: { id: string }) {
-  const router = useRouter();
-
   useEffect(() => {
     let delay = 2000;
     let timer: ReturnType<typeof setTimeout>;
@@ -28,7 +29,7 @@ export function WaitForResult({ id }: { id: string }) {
         const res = await fetch(`/api/analyses/${id}`, { cache: "no-store" });
         const { status } = (await res.json()) as { status: string };
         if (status === "completed" || status === "failed") {
-          router.refresh();
+          window.location.reload();
           return;
         }
       } catch {
@@ -42,7 +43,7 @@ export function WaitForResult({ id }: { id: string }) {
       stopped = true;
       clearTimeout(timer);
     };
-  }, [id, router]);
+  }, [id]);
 
   return null;
 }
