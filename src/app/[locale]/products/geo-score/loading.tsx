@@ -26,7 +26,7 @@ export default function GeoScoreLoading() {
 
       {/* Stats skeleton */}
       <div className="w-full bg-background-secondary py-12">
-        <div className="mx-auto flex max-w-5xl justify-center gap-8 px-4">
+        <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-x-8 gap-y-4 px-4">
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="text-center">
               <Skeleton className="mx-auto mb-1 h-8 w-16" />

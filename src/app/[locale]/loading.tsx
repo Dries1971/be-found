@@ -10,7 +10,7 @@ export default function HomeLoading() {
           <Skeleton className="mx-auto mb-4 h-6 w-32 rounded-full" />
           <Skeleton className="mx-auto mb-4 h-12 w-3/4" />
           <Skeleton className="mx-auto mb-8 h-6 w-2/3" />
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             <Skeleton className="h-12 w-40 rounded-lg" />
             <Skeleton className="h-12 w-40 rounded-lg" />
           </div>
@@ -19,7 +19,7 @@ export default function HomeLoading() {
 
       {/* Authority bar skeleton */}
       <div className="w-full bg-navy/90 py-6">
-        <div className="mx-auto flex max-w-5xl justify-center gap-8 px-4">
+        <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-x-8 gap-y-4 px-4">
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="text-center">
               <Skeleton className="mx-auto mb-1 h-8 w-16" />

@@ -56,7 +56,7 @@ export function CTASection({
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {variant === "audit" && (
           <div
-            className="absolute -top-20 left-1/2 h-40 w-[600px] -translate-x-1/2 opacity-10"
+            className="absolute -top-20 left-1/2 h-40 w-[600px] max-w-full -translate-x-1/2 opacity-10"
             aria-hidden="true"
             style={{
               background:
