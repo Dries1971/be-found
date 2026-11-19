@@ -10,6 +10,7 @@ const staticPages = [
   { path: "/services", lastModified: "2026-02-17", changeFrequency: "monthly" as const, priority: 0.9 },
   { path: "/products/bloffee", lastModified: "2026-02-17", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/products/geo-score", lastModified: "2026-02-17", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/analyze", lastModified: "2026-11-19", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/pricing", lastModified: "2026-02-17", changeFrequency: "monthly" as const, priority: 0.7 },
   { path: "/contact", lastModified: "2026-02-17", changeFrequency: "yearly" as const, priority: 0.6 },
   { path: "/faq", lastModified: "2026-02-17", changeFrequency: "monthly" as const, priority: 0.6 },

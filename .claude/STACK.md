@@ -1,6 +1,6 @@
 # Tech Stack — be-found.online
 
-> Last updated: 2026-02-17
+> Last updated: 2026-11-19
 
 ## Core
 
@@ -32,6 +32,8 @@
 | CDN / Images | Cloudinary |
 | Analytics | Plausible |
 | Email Service | TransIP SMTP |
+| Page analysis | GEO-Score white-label API (`api.geo-score.online/v1`), server-side only |
+| Bot protection | Cloudflare Turnstile (`/analyze`) |
 
 ## Development
 

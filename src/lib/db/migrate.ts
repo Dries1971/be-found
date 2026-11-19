@@ -64,6 +64,33 @@ async function migrate() {
   `;
 
   console.log("  ✓ indexes created");
+
+  // Page analyses requested via /analyze (GEO-Score API). Doubles as the
+  // rate-limit ledger: a row is reserved before the API call is made.
+  // visitor_hash = HMAC of the client IP, never the raw IP.
+  await sql`
+    CREATE TABLE IF NOT EXISTS page_analyses (
+      id SERIAL PRIMARY KEY,
+      analysis_id TEXT UNIQUE,
+      visitor_hash TEXT NOT NULL,
+      url TEXT NOT NULL,
+      locale TEXT NOT NULL DEFAULT 'en',
+      status TEXT NOT NULL DEFAULT 'reserved',
+      score INTEGER,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    )
+  `;
+  await sql`
+    CREATE INDEX IF NOT EXISTS idx_page_analyses_visitor_created
+      ON page_analyses (visitor_hash, created_at)
+  `;
+  await sql`
+    CREATE INDEX IF NOT EXISTS idx_page_analyses_created
+      ON page_analyses (created_at)
+  `;
+  console.log("  ✓ page_analyses table");
+
   console.log("Migrations complete.");
 
   await sql.end();
