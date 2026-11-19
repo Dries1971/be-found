@@ -65,6 +65,7 @@ export function FooterNewsletter({
     <div>
       <h3 className="text-sm font-semibold text-foreground">{title}</h3>
       <p className="mt-2 text-sm text-foreground-muted">{description}</p>
+      {/* min-w-0 on the input: its intrinsic ~20ch width otherwise overflows the narrow lg grid column */}
       <form ref={formRef} onSubmit={handleSubmit} className="mt-4 flex gap-2">
         {/* Honeypot */}
         <input
@@ -85,12 +86,12 @@ export function FooterNewsletter({
           required
           placeholder={placeholder}
           disabled={status === "sending"}
-          className="h-9 flex-1 rounded-[var(--radius-md)] border border-border bg-background px-3 text-sm text-foreground placeholder:text-foreground-muted/60 disabled:opacity-[var(--disabled-opacity)]"
+          className="h-9 min-w-0 flex-1 rounded-[var(--radius-md)] border border-border bg-background px-3 text-sm text-foreground placeholder:text-foreground-muted/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-[var(--disabled-opacity)]"
         />
         <button
           type="submit"
           disabled={status === "sending"}
-          className="h-9 rounded-[var(--radius-md)] bg-gold px-3 text-sm font-medium text-midnight transition-colors hover:bg-gold-hover disabled:opacity-[var(--disabled-opacity)]"
+          className="h-9 shrink-0 rounded-[var(--radius-md)] bg-gold px-3 text-sm font-medium text-midnight transition-colors hover:bg-gold-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-[var(--disabled-opacity)]"
         >
           {status === "sending" ? "..." : buttonText}
         </button>

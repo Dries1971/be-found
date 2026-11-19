@@ -56,7 +56,7 @@ export default async function AnalyzePage({ params }: PageProps) {
     <PageLayout narrow>
       <JsonLd data={schema} />
       <header className="mb-10 text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">{t("page_title")}</h1>
+        <h1 className="break-words text-4xl font-extrabold tracking-tight hyphens-auto sm:text-5xl">{t("page_title")}</h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground-muted">
           {t("page_description")}
         </p>

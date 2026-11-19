@@ -92,8 +92,8 @@ export async function Footer() {
             <span className="text-xs font-medium text-success">{t("privacy_badge")}</span>
           </div>
 
-          {/* Right: legal links + socials */}
-          <div className="flex items-center gap-4">
+          {/* Right: legal links + socials (wraps: NL/DE/FR labels are too long for one row on phones) */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:justify-end">
             <Link href="/privacy" className="text-xs text-foreground-muted transition-colors duration-[var(--duration-fast)] hover:text-foreground">
               {t("privacy")}
             </Link>
